@@ -1,0 +1,372 @@
+<style>
+    .input_clean {
+        border-style: none;
+    }
+</style>
+</head>
+
+
+<div class="container-fluid ">
+    <div class="acoes">
+    </div>
+    <div class="">
+        <div class="row">
+            <div class="col-6 mt-3" id="header">
+                <h1>Ivoclar</h1>
+                <h2>IVOCLAR VIVADENT LTDA</h2>
+                <p>Alamenda Caiapós, 723</p>
+                <p>Centro Empresarial Tamboré - CEP: 06460-110</p>
+                <p>Fone: (11)2424-7400</p>
+                <h3>Barueri - São Paulo</h3>
+            </div>
+
+
+            <div class="col-6 mt-3 " id="header2">
+
+                <div class="form-group">
+                    <label>ID Pedido</label>
+                    <input class="form-control" type="text" name="id_pedido" id="id_pedido" placeholder="ID Pedido" value="{{id_pedido}}"
+                        readonly value="1">
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label>Vendedor</label>
+                        <input class="form-control" type="text" name="vendedor" id="vendedor" placeholder="Vendedor..."
+                            required value="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cód. Cliente</label>
+                        <input class="form-control" type="text" name="cod_cliente" id="cod_cliente"
+                            placeholder="Código do cliente..." value="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Loja Número</label>
+                        <input class="form-control" type="text" name="loja_numero" id="loja_numero"
+                            placeholder="Número da Loja..." value="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Data</label>
+                        <input class="form-control" type="date" name="data" id="data" placeholder="Digite a Data..."
+                            value="2022-09-01">
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="header3">
+
+        <div>
+            <div class="row mt-2 border border-black border-start-0 rounded-end">
+                <div class="col-6">
+                    <h6>CNPJ: 04.004.675/0001-60</h6>
+                </div>
+                <div class="col-6">
+                    <h6>INSCR. ESTADUAL: 116314570.110</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form action="">
+        <div class="row">
+            <div class="form-group col-12 mt-2 ">
+                <label>Nome/ Razão Social: </label>
+                <input class="form-control" type="text" name="razao_social" id="razao_social"
+                    placeholder="Nome ou Razão Social..." value="1">
+            </div>
+
+            <div class="form-group col-4">
+                <label>CEP</label>
+                <input class="form-control" type="text" name="cep" id="cep" placeholder="Digite o CEP..." value="1">
+            </div>
+
+            <div class="form-group col-4">
+                <label>Endereço</label>
+                <input class="form-control" type="text" name="endereco" id="endereco"
+                    placeholder="Digite o seu endereço..." value="1">
+            </div>
+
+            <div class="form-group col-4">
+                <label>Bairro</label>
+                <input class="form-control" type="text" name="bairro" id="bairro" placeholder="Digite o seu bairro..."
+                    value="1">
+            </div>
+
+            <div class="form-group col-2">
+                <label>Municipio</label>
+                <input class="form-control" type="text" name="municipio" id="municipio"
+                    placeholder="Digite o seu municipio..." value="1">
+            </div>
+
+            <div class="form-group col-2">
+                <label>UF</label>
+                <input class="form-control" type="text" name="uf" id="uf" placeholder="Estado..." value="1">
+            </div>
+
+            <div class="form-group col-4">
+                <label>E-mail</label>
+                <input class="form-control" type="text" name="email" id="email" placeholder="Digite um E-mail..."
+                    value="1">
+            </div>
+
+            <div class="form-group col-2">
+                <label>Fone/Fax</label>
+                <input class="form-control" type="text" name="fone" id="fone" placeholder="Telefone ou Fax..."
+                    value="1">
+            </div>
+
+            <div class="form-group col-2">
+                <label>Contato</label>
+                <input class="form-control" type="text" name="contato" id="contato" placeholder="Contato..." value="1">
+            </div>
+
+            <div class="form-group col-4">
+                <label>CNPJ/CPF</label>
+                <input class="form-control" type="text" name="cpf" id="cpf" placeholder="CPF OU CNPJ..." value="1">
+            </div>
+
+            <div class="form-group col-8">
+                <label>Inscrição Estadual</label>
+                <input class="form-control" type="text" name="inscricao" id="inscricao"
+                    placeholder="Inscrição Estadual..." value="1">
+            </div>
+
+            <div class="form-group col-4">
+                <label>Condição do Pagamento</label>
+                <input class="form-control" type="text" name="cod_pagamento" id="cod_pagamento"
+                    placeholder="Condição do Pagamento..." value="1">
+            </div>
+
+            <div class="form-group col-8">
+                <label>Transportadora</label>
+                <input class="form-control" type="text" name="transportadora" id="transportadora"
+                    placeholder="Transportadora..." value="1">
+            </div>
+
+            <div class="form-group col-12">
+                <label>Aplicar Desconto de Diferença de ICMS</label>
+                <input class="form-check-input" type="checkbox" name="">
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+
+        <div class="table1 col-12 mt-4">
+            <div class="table-responsive">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Produto</th>
+                            <th>Descrição</th>
+                            <th>GBU</th>
+                            <th>Valor Unit</th>
+                            <th>Desc1 </th>
+                            <th>Valor Unit 1</th>
+                            <th>Desc2 </th>
+                            <th>Valor Unit 2</th>
+                            <th>Desc Difal </th>
+                            <th>Valor Unit 3</th>
+                            <th>Total </th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="novalinha">
+                        <tr>
+                            <td id="items">1</td>
+                            <td><input class="item" type="text" readonly value="{{item}}"></td>
+                            <td><input class="produto" type="text" list="produtos"></td>
+                            <td></td>
+                            <td><input class="gbu" style="text-align: right;" type="text"></td>
+                            <td><input class="valor_unit" style="text-align: right;" type="text"></td>
+
+                            <td><input class="desc1" style="text-align: right;" type="text" value="0,00"></td>
+                            <td><input class="valor_unit1" style="text-align: right;" type="text"></td>
+
+                            <td><input class="desc2" style="text-align: right;" type="text" value="0,00"></td>
+                            <td><input class="valor_unit2" style="text-align: right;" type="text"></td>
+
+                            <td><input class="desc_final" style="text-align: right;" type="text" value="0,00"></td>
+
+                            <td><input class="valor_unit3" style="text-align: right;" type="text"></td>
+
+                            <td><input class="total" style="text-align: right;" type="text"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button onclick="adicionarCampo()" type="button">+</button>
+            </div>
+        </div>
+        <button id="form1" type="button" class="btn btn-success col-2 m-auto">Registrar</button>
+    </div>
+</div>
+
+<datalist id="produtos">
+    <option value="PA001">PRODUTO ACABADO 1</option>
+    <option value="PA002">PRODUTO ACABADO 2</option>
+    <option value="PA003">PRODUTO ACABADO 3</option>
+    <option value="PA004">PRODUTO ACABADO 4</option>
+    <option value="PI001">PRODUTO INTERMEDIARIO 4</option>
+</datalist>
+
+
+
+<script>
+
+    var controleCampo = 1;
+
+    function adicionarCampo() {
+        controleCampo++;
+        console.log(controleCampo)
+        document.getElementById('novalinha').insertAdjacentHTML('beforeend',
+            '<tbody id="campo ' + controleCampo + '"><tr> <td id="items">' + controleCampo + '</td><td><input class="produto" type="text" list="produtos"></td><td></td><td><input class="gbu" style="text-align: right;" type="number"></td><td><input class="valor_unit" style="text-align: right;" type="number"></td><td><input class="desc1" style="text-align: right;" type="number"></td><td><input class="valor_unit1" style="text-align: right;" type="number"></td><td><input class="desc2" style="text-align: right;" type="number"></td><td><input class="valor_unit2" style="text-align: right;" type="number"></td><td><input class="desc_final" style="text-align: right;" type="number"></td><td><input class="valor_unit3" style="text-align: right;" type="number"></td><td><input class="total" style="text-align: right;" type="number"></td></tr></tbody>')
+    }
+
+
+    //Fetch Pedido
+    try {
+        let form1 = document.querySelector('#form1')
+        form1.addEventListener('click', async () => {
+            let id_pedido = document.querySelector('#id_pedido').value
+            let vendedor = document.querySelector('#vendedor').value
+            let cod_cliente = document.querySelector('#cod_cliente').value
+            let loja_numero = document.querySelector('#loja_numero').value
+            let data = document.querySelector('#data').value
+            let razao_social = document.querySelector('#razao_social').value
+            let cep = document.querySelector('#cep').value
+            let endereco = document.querySelector('#endereco').value
+            let bairro = document.querySelector('#bairro').value
+            let municipio = document.querySelector('#municipio').value
+            let uf = document.querySelector('#uf').value
+            let email = document.querySelector('#email').value
+            let fone = document.querySelector('#fone').value
+            let contato = document.querySelector('#contato').value
+            let cpf = document.querySelector('#cpf').value
+            let inscricao = document.querySelector('#inscricao').value
+            let cod_pagamento = document.querySelector('#cod_pagamento').value
+            let transportadora = document.querySelector('#transportadora').value
+            //Item
+            let item = document.querySelectorAll('.item')
+            let produto = document.querySelectorAll('.produto')
+            let gbu = document.querySelectorAll('.gbu')
+            let valor_unit = document.querySelectorAll('.valor_unit')
+            let desc1 = document.querySelectorAll('.desc1')
+            let valor_unit1 = document.querySelectorAll('.valor_unit1')
+            let desc2 = document.querySelectorAll('.desc2')
+            let valor_unit2 = document.querySelectorAll('.valor_unit2')
+            let desc_final = document.querySelectorAll('.desc_final')
+            let valor_unit3 = document.querySelectorAll('.valor_unit3')
+            let total = document.querySelectorAll('.total')
+
+            var itens = []
+            for (let i = 0; i < produto.length; i++) {
+                var item = {
+                    "item": if(item[i].value=="",1,item[i].value),
+                    "produto": produto[i].value,
+                    "gbu": gbu[i].value,
+                    "valor_unit": valor_unit[i].value,
+                    "desc1": desc1[i].value,
+                    "valor_unit1": valor_unit1[i].value,
+                    "desc2": desc2[i].value,
+                    "valor_unit2": valor_unit2[i].value,
+                    "desc_final": desc_final[i].value,
+                    "valor_unit3": valor_unit3[i].value,
+                    "total": total[i].value,
+                }
+                itens.push(item)
+            }
+
+
+            const response = await fetch('/pedido/registrar', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    id_pedido,vendedor, cod_cliente, loja_numero, data, razao_social,
+                    cep, endereco, bairro, municipio, uf, email, fone, contato, cpf, inscricao, cod_pagamento, transportadora,
+                    itens
+                })
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data)
+                    document.getElementById('id_pedido').value = data.id_pedido
+                })
+
+            if (response.status === 200) {
+                return swal("Sucesso !", "Registro realizado com sucesso !", "success");
+            }
+            if (response.status === 400) {
+                return swal("Error: !", " Preencha todos os campos", "error");
+            }
+        })
+
+
+    } catch (err) {
+        console.log(`Erro: ${err}`)
+    }
+
+
+
+    //Fetch Items
+
+
+
+    //API VIACEP 
+
+    const limparFormulario = (endereco) => {
+        document.querySelector('#bairro').value = '';
+        document.querySelector('#municipio').value = '';
+        document.querySelector('#uf').value = '';
+        document.querySelector('#endereco').value = '';
+    }
+
+    const preencherFormulario = (endereco) => {
+        document.querySelector('#bairro').value = endereco.bairro;
+        document.querySelector('#municipio').value = endereco.localidade;
+        document.querySelector('#uf').value = endereco.uf;
+        document.querySelector('#endereco').value = endereco.logradouro;
+
+    }
+
+    const cepValido = (cep) => cep.length == 8;
+
+    const pesquisarCep = async () => {
+        limparFormulario();
+        const cep = document.querySelector('#cep').value;
+        const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+        if (cepValido(cep)) {
+            const dados = await fetch(url);
+            const endereco = await dados.json();
+
+            if (endereco.hasOwnProperty('erro')) {
+                document.querySelector('#endereco').value = 'CEP não encontrado !';
+            } else {
+                preencherFormulario(endereco)
+            }
+
+        } else {
+            document.querySelector('#endereco').value = 'CEP incorreto digite novamente !';
+        }
+    }
+
+    document.querySelector('#cep')
+        .addEventListener('focusout', pesquisarCep);
+
+
+    window.addEventListener('load', function () {
+
+    });    
+</script>
+
+</html>
