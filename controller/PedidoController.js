@@ -1,6 +1,7 @@
 const Pedido = require('../models/Pedido')
 const Item = require('../models/Item')
 const sequelize = require('../db/db')
+const { raw } = require('body-parser')
 
 module.exports = class AuthController {
     static registrar(req, res) {
@@ -9,58 +10,33 @@ module.exports = class AuthController {
 
     static async registrarPost(req, res) {
 
-         try {
-            //  var pedido
-            //  if (true) {
-            //      pedido = req.body
-            //   } else {
-            //      pedido = {
-            //         id: req.body.id,
-            //      vendedor: req.body.vendedor
-            //     }
-            // }
+        try {
 
-        var pedido = {
-            item: req.body.item,
-            vendedor: req.body.vendedor,
-            cod_cliente: req.body.cod_cliente,
-            loja_numero: req.body.loja_numero,
-            data: req.body.data,
-            razao_social: req.body.razao_social,
-            cep: req.body.cep,
-            endereco: req.body.endereco,
-            bairro: req.body.bairro,
-            municipio: req.body.municipio,
-            email: req.body.email,
-            fone: req.body.fone,
-            contato: req.body.contato,
-            cpf: req.body.cpf,
-            uf: req.body.uf,
-            inscricao: req.body.inscricao,
-            cod_pagamento: req.body.cod_pagamento,
-            transportadora: req.body.transportadora,
-
-        }
-
+            var pedido = req.body
+            var id_pedido
             var idPedido
             if (req.body.id == undefined) {
                 idPedido = await Pedido.create(pedido)
+                id_pedido=idPedido.id
             } else {
                 idPedido = req.body.id
-                await Pedido.update(pedido, { where: { id: req.body.id } })
+                var pedido = await Pedido.update(pedido, { where: { id: req.body.id } })
+                console.log(pedido)
+                id_pedido=req.body.id
             }
+            console.log(id_pedido)
 
 
             if (pedido) {
                 var itens = req.body.itens
                 itens.map(async (item) => {
-                    console.log(item)
                     var searchItem = await Item.findOne({
                         raw: true
                         , where: {
-                            id_pedido: idPedido
-                            , item: item.item
+                            Id_pedido: idPedido,
+                            item: item.item
                         }
+
                     })
                     if (searchItem) {
                         await Item.update(item, {
@@ -69,20 +45,26 @@ module.exports = class AuthController {
                                 , item: item.item
                             }
                         })
+
+                        
+
                     } else {
-                        item.Id_pedido = idPedido
-                        await Item.create(item)
+                        item.Id_pedido = idPedido.id
+                        // console.log(item)
+                        var pedidoCriado = await Item.create(item)
                     }
-                    res.status(200).json({ message: "Registro realizado com sucesso !", id_pedido: pedidoCriado });
+                    
                 })
+                // return res.status(200).json({ message: "Registro Atualizado com sucesso !", pedidoCriado: pedidoCriado });
+                return res.send({id_pedido: id_pedido})
+
             }
 
         } catch (error) {
-            res.status(400).json({ message: "Não foi possivel registrar !" + console.log(error) });
-            return
+            return console.log("Aconteceu um  erro !" + error)
+
         }
     }
-
 
 
     static async lista(req, res) {
@@ -97,8 +79,7 @@ module.exports = class AuthController {
 
         } catch (error) {
             console.log(error)
+            return
         }
-
-
     }
 }

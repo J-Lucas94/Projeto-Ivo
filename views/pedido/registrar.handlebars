@@ -25,26 +25,26 @@
 
                 <div class="form-group">
                     <label>ID Pedido</label>
-                    <input class="form-control" type="text" name="id_pedido" id="id_pedido" placeholder="ID Pedido" value="{{id_pedido}}"
-                        readonly value="1">
+                    <input class="form-control" type="text" name="Id_pedido" id="id_pedido" placeholder="ID Pedido" value="{{Id_pedido}}"
+                        >
                 </div>
                 <form>
                     <div class="form-group">
                         <label>Vendedor</label>
                         <input class="form-control" type="text" name="vendedor" id="vendedor" placeholder="Vendedor..."
-                            required value="1">
+                            required value="José Lucas  ">
                     </div>
 
                     <div class="form-group">
                         <label>Cód. Cliente</label>
                         <input class="form-control" type="text" name="cod_cliente" id="cod_cliente"
-                            placeholder="Código do cliente..." value="1">
+                            placeholder="Código do cliente..." value="139897">
                     </div>
 
                     <div class="form-group">
                         <label>Loja Número</label>
                         <input class="form-control" type="text" name="loja_numero" id="loja_numero"
-                            placeholder="Número da Loja..." value="1">
+                            placeholder="Número da Loja..." value="134556-4">
                     </div>
 
                     <div class="form-group">
@@ -78,75 +78,75 @@
             <div class="form-group col-12 mt-2 ">
                 <label>Nome/ Razão Social: </label>
                 <input class="form-control" type="text" name="razao_social" id="razao_social"
-                    placeholder="Nome ou Razão Social..." value="1">
+                    placeholder="Nome ou Razão Social..." value="Testando">
             </div>
 
             <div class="form-group col-4">
                 <label>CEP</label>
-                <input class="form-control" type="text" name="cep" id="cep" placeholder="Digite o CEP..." value="1">
+                <input class="form-control" type="text" name="cep" id="cep" placeholder="Digite o CEP..." value="06460110">
             </div>
 
             <div class="form-group col-4">
                 <label>Endereço</label>
                 <input class="form-control" type="text" name="endereco" id="endereco"
-                    placeholder="Digite o seu endereço..." value="1">
+                    placeholder="Digite o seu endereço...">
             </div>
 
             <div class="form-group col-4">
                 <label>Bairro</label>
                 <input class="form-control" type="text" name="bairro" id="bairro" placeholder="Digite o seu bairro..."
-                    value="1">
+                    >
             </div>
 
             <div class="form-group col-2">
                 <label>Municipio</label>
                 <input class="form-control" type="text" name="municipio" id="municipio"
-                    placeholder="Digite o seu municipio..." value="1">
+                    placeholder="Digite o seu municipio...">
             </div>
 
             <div class="form-group col-2">
                 <label>UF</label>
-                <input class="form-control" type="text" name="uf" id="uf" placeholder="Estado..." value="1">
+                <input class="form-control" type="text" name="uf" id="uf" placeholder="Estado...">
             </div>
 
             <div class="form-group col-4">
                 <label>E-mail</label>
                 <input class="form-control" type="text" name="email" id="email" placeholder="Digite um E-mail..."
-                    value="1">
+                    value="lucas@gmail.com">
             </div>
 
             <div class="form-group col-2">
                 <label>Fone/Fax</label>
                 <input class="form-control" type="text" name="fone" id="fone" placeholder="Telefone ou Fax..."
-                    value="1">
+                    value="41363026">
             </div>
 
             <div class="form-group col-2">
                 <label>Contato</label>
-                <input class="form-control" type="text" name="contato" id="contato" placeholder="Contato..." value="1">
+                <input class="form-control" type="text" name="contato" id="contato" placeholder="Contato..." value="999999999">
             </div>
 
             <div class="form-group col-4">
                 <label>CNPJ/CPF</label>
-                <input class="form-control" type="text" name="cpf" id="cpf" placeholder="CPF OU CNPJ..." value="1">
+                <input class="form-control" type="text" name="cpf" id="cpf" placeholder="CPF OU CNPJ..." value="44444444444">
             </div>
 
             <div class="form-group col-8">
                 <label>Inscrição Estadual</label>
                 <input class="form-control" type="text" name="inscricao" id="inscricao"
-                    placeholder="Inscrição Estadual..." value="1">
+                    placeholder="Inscrição Estadual..." value="157667">
             </div>
 
             <div class="form-group col-4">
                 <label>Condição do Pagamento</label>
                 <input class="form-control" type="text" name="cod_pagamento" id="cod_pagamento"
-                    placeholder="Condição do Pagamento..." value="1">
+                    placeholder="Condição do Pagamento..." value="Pendente">
             </div>
 
             <div class="form-group col-8">
                 <label>Transportadora</label>
                 <input class="form-control" type="text" name="transportadora" id="transportadora"
-                    placeholder="Transportadora..." value="1">
+                    placeholder="Transportadora..." value="Mercado Livre">
             </div>
 
             <div class="form-group col-12">
@@ -180,23 +180,18 @@
 
                     <tbody id="novalinha">
                         <tr>
-                            <td id="items">1</td>
-                            <td><input class="item" type="text" readonly value="{{item}}"></td>
+                            {{!-- <td id="items">1</td> --}}
+                            <td><input class="item" type="text"  value="{{item}}"></td>
                             <td><input class="produto" type="text" list="produtos"></td>
-                            <td></td>
+                            <td><input class="" type="text" list="" readonly></td>
                             <td><input class="gbu" style="text-align: right;" type="text"></td>
                             <td><input class="valor_unit" style="text-align: right;" type="text"></td>
-
                             <td><input class="desc1" style="text-align: right;" type="text" value="0,00"></td>
                             <td><input class="valor_unit1" style="text-align: right;" type="text"></td>
-
                             <td><input class="desc2" style="text-align: right;" type="text" value="0,00"></td>
                             <td><input class="valor_unit2" style="text-align: right;" type="text"></td>
-
                             <td><input class="desc_final" style="text-align: right;" type="text" value="0,00"></td>
-
                             <td><input class="valor_unit3" style="text-align: right;" type="text"></td>
-
                             <td><input class="total" style="text-align: right;" type="text"></td>
                         </tr>
                     </tbody>
@@ -226,7 +221,7 @@
         controleCampo++;
         console.log(controleCampo)
         document.getElementById('novalinha').insertAdjacentHTML('beforeend',
-            '<tbody id="campo ' + controleCampo + '"><tr> <td id="items">' + controleCampo + '</td><td><input class="produto" type="text" list="produtos"></td><td></td><td><input class="gbu" style="text-align: right;" type="number"></td><td><input class="valor_unit" style="text-align: right;" type="number"></td><td><input class="desc1" style="text-align: right;" type="number"></td><td><input class="valor_unit1" style="text-align: right;" type="number"></td><td><input class="desc2" style="text-align: right;" type="number"></td><td><input class="valor_unit2" style="text-align: right;" type="number"></td><td><input class="desc_final" style="text-align: right;" type="number"></td><td><input class="valor_unit3" style="text-align: right;" type="number"></td><td><input class="total" style="text-align: right;" type="number"></td></tr></tbody>')
+            '<tbody id="campo ' + controleCampo + '"><tr> <td><input class="item" type="text" readonly value="{{item}}"></td><td><input class="produto" type="text" list="produtos"></td><td></td><td><input class="gbu" style="text-align: right;" type="number"></td><td><input class="valor_unit" style="text-align: right;" type="number"></td><td><input class="desc1" style="text-align: right;" type="number"></td><td><input class="valor_unit1" style="text-align: right;" type="number"></td><td><input class="desc2" style="text-align: right;" type="number"></td><td><input class="valor_unit2" style="text-align: right;" type="number"></td><td><input class="desc_final" style="text-align: right;" type="number"></td><td><input class="valor_unit3" style="text-align: right;" type="number"></td><td><input class="total" style="text-align: right;" type="number"></td></tr></tbody>')
     }
 
 
@@ -267,8 +262,8 @@
 
             var itens = []
             for (let i = 0; i < produto.length; i++) {
-                var item = {
-                    "item": if(item[i].value=="",1,item[i].value),
+                var items = {
+                    "item": (item[i].value=="",1,item[i].value),
                     "produto": produto[i].value,
                     "gbu": gbu[i].value,
                     "valor_unit": valor_unit[i].value,
