@@ -21,41 +21,39 @@ module.exports = class AuthController {
             } else {
                 idPedido = req.body.id
                 var pedido = await Pedido.update(pedido, { where: { id: req.body.id } })
-                console.log(pedido)
                 id_pedido=req.body.id
             }
             console.log(id_pedido)
 
 
+
             if (pedido) {
-                var itens = req.body.itens
+                var itens = req.body.items
+                console.log(itens)
                 itens.map(async (item) => {
                     var searchItem = await Item.findOne({
                         raw: true
                         , where: {
                             Id_pedido: idPedido,
-                            item: item.item
+                            item: item.item                      
                         }
-
                     })
+                    console.log(itens)
                     if (searchItem) {
                         await Item.update(item, {
                             where: {
-                                Id_pedido: idPedido
-                                , item: item.item
+                                Id_pedido: idPedido,
+                                 item: item.item
                             }
                         })
-
-                        
-
+                                               
                     } else {
-                        item.Id_pedido = idPedido.id
+                        item.id_pedido = idPedido.id
                         // console.log(item)
                         var pedidoCriado = await Item.create(item)
-                    }
-                    
+                        console.log(pedidoCriado)
+                    }                  
                 })
-                // return res.status(200).json({ message: "Registro Atualizado com sucesso !", pedidoCriado: pedidoCriado });
                 return res.send({id_pedido: id_pedido})
 
             }

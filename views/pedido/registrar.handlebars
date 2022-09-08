@@ -181,18 +181,18 @@
                     <tbody id="novalinha">
                         <tr>
                             {{!-- <td id="items">1</td> --}}
-                            <td><input class="item" type="text"  value="{{item}}"></td>
-                            <td><input class="produto" type="text" list="produtos"></td>
+                            <td><input class="item" type="text"  value="1"></td>
+                            <td><input class="produto" type="text" list="produtos" value="1"></td>
                             <td><input class="" type="text" list="" readonly></td>
-                            <td><input class="gbu" style="text-align: right;" type="text"></td>
-                            <td><input class="valor_unit" style="text-align: right;" type="text"></td>
+                            <td><input class="gbu" style="text-align: right;" type="text" value="1"></td>
+                            <td><input class="valor_unit" style="text-align: right;" type="text" value="1"></td>
                             <td><input class="desc1" style="text-align: right;" type="text" value="0,00"></td>
-                            <td><input class="valor_unit1" style="text-align: right;" type="text"></td>
+                            <td><input class="valor_unit1" style="text-align: right;" type="text" value="1"></td>
                             <td><input class="desc2" style="text-align: right;" type="text" value="0,00"></td>
-                            <td><input class="valor_unit2" style="text-align: right;" type="text"></td>
-                            <td><input class="desc_final" style="text-align: right;" type="text" value="0,00"></td>
-                            <td><input class="valor_unit3" style="text-align: right;" type="text"></td>
-                            <td><input class="total" style="text-align: right;" type="text"></td>
+                            <td><input class="valor_unit2" style="text-align: right;" type="text" value="1"></td>
+                            <td><input class="desc_final" style="text-align: right;" type="text" value="0,00" value="1"></td>
+                            <td><input class="valor_unit3" style="text-align: right;" type="text" value="1"></td>
+                            <td><input class="total" style="text-align: right;" type="text" value="1"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -221,7 +221,7 @@
         controleCampo++;
         console.log(controleCampo)
         document.getElementById('novalinha').insertAdjacentHTML('beforeend',
-            '<tbody id="campo ' + controleCampo + '"><tr> <td><input class="item" type="text" readonly value="{{item}}"></td><td><input class="produto" type="text" list="produtos"></td><td></td><td><input class="gbu" style="text-align: right;" type="number"></td><td><input class="valor_unit" style="text-align: right;" type="number"></td><td><input class="desc1" style="text-align: right;" type="number"></td><td><input class="valor_unit1" style="text-align: right;" type="number"></td><td><input class="desc2" style="text-align: right;" type="number"></td><td><input class="valor_unit2" style="text-align: right;" type="number"></td><td><input class="desc_final" style="text-align: right;" type="number"></td><td><input class="valor_unit3" style="text-align: right;" type="number"></td><td><input class="total" style="text-align: right;" type="number"></td></tr></tbody>')
+            '<tbody id="campo ' + controleCampo + '"><tr> <td><input class="item" type="text"  value="{{item}}"></td><td><input class="produto" type="text" list="produtos"></td><td></td><td><input class="gbu" style="text-align: right;" type="number"></td><td><input class="valor_unit" style="text-align: right;" type="number"></td><td><input class="desc1" style="text-align: right;" type="number"></td><td><input class="valor_unit1" style="text-align: right;" type="number"></td><td><input class="desc2" style="text-align: right;" type="number"></td><td><input class="valor_unit2" style="text-align: right;" type="number"></td><td><input class="desc_final" style="text-align: right;" type="number"></td><td><input class="valor_unit3" style="text-align: right;" type="number"></td><td><input class="total" style="text-align: right;" type="number"></td></tr></tbody>')
     }
 
 
@@ -276,6 +276,7 @@
                     "total": total[i].value,
                 }
                 itens.push(item)
+                console.log(items)
             }
 
 
