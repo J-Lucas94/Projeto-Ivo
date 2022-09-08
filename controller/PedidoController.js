@@ -17,41 +17,40 @@ module.exports = class AuthController {
             var idPedido
             if (req.body.id == undefined) {
                 idPedido = await Pedido.create(pedido)
-                id_pedido=idPedido.id
+                id_pedido = idPedido.id
             } else {
                 idPedido = req.body.id
-                var pedido = await Pedido.update(pedido, { where: { id: req.body.id } })
+                var id = idPedido
+                var pedido = await Pedido.update(id,pedido, { where: { id: req.body.id } })
                 id_pedido=req.body.id
             }
-            console.log(id_pedido)
-
-
-
+            
             if (pedido) {
-                var itens = req.body.items
-                console.log(itens)
-                itens.map(async (item) => {
+                console.log("Esteeeee",pedido)
+                var items = req.body.itens
+                // console.log(items)
+                items.map(async (item) => {
                     var searchItem = await Item.findOne({
                         raw: true
                         , where: {
-                            Id_pedido: idPedido,
+                            Id_pedido: id_pedido,
                             item: item.item                      
                         }
                     })
-                    console.log(itens)
+                    // console.log(id_pedido)
                     if (searchItem) {
                         await Item.update(item, {
                             where: {
-                                Id_pedido: idPedido,
+                                Id_pedido: id_pedido,
                                  item: item.item
                             }
                         })
                                                
                     } else {
-                        item.id_pedido = idPedido.id
+                        item.Id_pedido = id_pedido
                         // console.log(item)
                         var pedidoCriado = await Item.create(item)
-                        console.log(pedidoCriado)
+                        // console.log(pedidoCriado)
                     }                  
                 })
                 return res.send({id_pedido: id_pedido})

@@ -181,7 +181,7 @@
                     <tbody id="novalinha">
                         <tr>
                             {{!-- <td id="items">1</td> --}}
-                            <td><input class="item" type="text"  value="1"></td>
+                            <td><input class="item" type="text"  value="{{item}}"></td>
                             <td><input class="produto" type="text" list="produtos" value="1"></td>
                             <td><input class="" type="text" list="" readonly></td>
                             <td><input class="gbu" style="text-align: right;" type="text" value="1"></td>
@@ -229,7 +229,7 @@
     try {
         let form1 = document.querySelector('#form1')
         form1.addEventListener('click', async () => {
-            let id_pedido = document.querySelector('#id_pedido').value
+            let Id_pedido = document.querySelector('#id_pedido').value
             let vendedor = document.querySelector('#vendedor').value
             let cod_cliente = document.querySelector('#cod_cliente').value
             let loja_numero = document.querySelector('#loja_numero').value
@@ -259,6 +259,7 @@
             let desc_final = document.querySelectorAll('.desc_final')
             let valor_unit3 = document.querySelectorAll('.valor_unit3')
             let total = document.querySelectorAll('.total')
+            
 
             var itens = []
             for (let i = 0; i < produto.length; i++) {
@@ -275,8 +276,8 @@
                     "valor_unit3": valor_unit3[i].value,
                     "total": total[i].value,
                 }
-                itens.push(item)
-                console.log(items)
+                itens.push(items)
+                console.log(itens)
             }
 
 
@@ -287,7 +288,7 @@
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    id_pedido,vendedor, cod_cliente, loja_numero, data, razao_social,
+                    Id_pedido,vendedor, cod_cliente, loja_numero, data, razao_social,
                     cep, endereco, bairro, municipio, uf, email, fone, contato, cpf, inscricao, cod_pagamento, transportadora,
                     itens
                 })

@@ -117,7 +117,7 @@ const Item = db.define('Item', {
 
 })
 
-// db.sync({force:true})
+//  db.sync({force:true})
 
 Item.belongsTo(Pedido, {foreignKey: 'Id_pedido', allowNull: false})
 
