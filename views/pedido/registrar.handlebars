@@ -247,6 +247,7 @@
             let inscricao = document.querySelector('#inscricao').value
             let cod_pagamento = document.querySelector('#cod_pagamento').value
             let transportadora = document.querySelector('#transportadora').value
+            
             //Item
             let item = document.querySelectorAll('.item')
             let produto = document.querySelectorAll('.produto')
@@ -299,11 +300,10 @@
                     document.getElementById('id_pedido').value = data.id_pedido
                 })
 
-            if (response.status === 200) {
+                
+
+            if (response)  {
                 return swal("Sucesso !", "Registro realizado com sucesso !", "success");
-            }
-            if (response.status === 400) {
-                return swal("Error: !", " Preencha todos os campos", "error");
             }
         })
 

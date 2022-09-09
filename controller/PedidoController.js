@@ -10,23 +10,25 @@ module.exports = class AuthController {
 
     static async registrarPost(req, res) {
 
+
         try {
 
             var pedido = req.body
             var id_pedido
             var idPedido
+            
             if (req.body.id == undefined) {
                 idPedido = await Pedido.create(pedido)
                 id_pedido = idPedido.id
             } else {
                 idPedido = req.body.id
-                var id = idPedido
-                var pedido = await Pedido.update(id,pedido, { where: { id: req.body.id } })
+                
+                var pedido = await Pedido.update(pedido, { where: { id: req.body.id } })
                 id_pedido=req.body.id
             }
-            
+        
             if (pedido) {
-                console.log("Esteeeee",pedido)
+                
                 var items = req.body.itens
                 // console.log(items)
                 items.map(async (item) => {
@@ -42,7 +44,7 @@ module.exports = class AuthController {
                         await Item.update(item, {
                             where: {
                                 Id_pedido: id_pedido,
-                                 item: item.item
+                                item: item.item
                             }
                         })
                                                
@@ -53,7 +55,8 @@ module.exports = class AuthController {
                         // console.log(pedidoCriado)
                     }                  
                 })
-                return res.send({id_pedido: id_pedido})
+                res.send({  id_pedido: id_pedido, items: items})
+                
 
             }
 

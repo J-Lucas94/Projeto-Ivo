@@ -1,4 +1,90 @@
-<div class="table1 col-12">
+<div class="list-group-item">
+    <div class="d-flex">
+        <div class="mr-auto p-2">
+            <h2 class="display-4 titulo">Items</h2>
+        </div>
+
+
+    </div>
+    <hr>
+    {{>_msg}}
+
+    <div class="table-responsive">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID pedido</th>
+                    <th>Item</th>
+                    <th>Produto</th>
+                    <th>GBU</th>
+                    <th>Valor Unit</th>
+                    <th>Desc1 </th>
+                    <th>Valor Unit 1</th>
+                    <th>Desc2 </th>
+                    <th>Valor Unit 2</th>
+                    <th>Desc Difal </th>
+                    <th>Valor Unit 3</th>
+                    <th>Total </th>
+                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each lista}}
+                <tr>
+                    <td>{{this.Id_pedido}}</td>
+                    <td>{{this.item}}</td>
+                    <td>{{this.produto}}</td>
+                    <td>{{this.gbu}}</td>
+                    <td>{{this.valor_unit}}</td>
+                    <td>{{this.desc1}}</td>
+                    <td>{{this.valor_unit1}}</td>
+                    <td>{{this.desc2}}</td>
+                    <td>{{this.valor_unit2}}</td>
+                    <td>{{this.desc_final}}</td>
+                    <td>{{this.valor_unit3}}</td>
+                    <td>{{this.total}}</td>
+                    
+                    
+
+                    <td class="text-center">
+                        <span class="d-none d-md-block">
+
+                            <a href="/pedido/registrar/{{this.id}}" class="btn btn-outline-primary btn-sm">Editar</a>
+
+                        </span>
+                        <div class="dropdown d-block d-md-none">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
+                                <a class="dropdown-item" href="/pedido/registrar/{{this.id}}">Editar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <div class="table1 col-12">
     <div class="table-responsive">
         <table class="table table-responsive">
             <thead>
@@ -23,6 +109,7 @@
                     <td>{{this.produto}}</td>
                     <td>{{this.gbu}}</td>
                     <td>{{this.valor_unit}}</td>
+
                     <td>{{this.desc1}}</td>
                     <td>{{this.valor_unit1}}</td>
                     <td>{{this.desc2}}</td>
@@ -33,4 +120,4 @@
                 </tr>
             </tbody>
             {{/each}}
-        </table>
+        </table> --}}
