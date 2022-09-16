@@ -1,68 +1,102 @@
 const Pedido = require('../models/Pedido')
 const Item = require('../models/Item')
+const Produto = require('../models/Produto')
 const sequelize = require('../db/db')
 const { raw } = require('body-parser')
 
 module.exports = class AuthController {
-    static registrar(req, res) {
-        res.render("pedido/registrar")
+    static async registrar(req, res) {
+
+        var produto = await Produto.findAll({ raw: true })
+
+        if (req.params.id) {
+            var pedido = await Pedido.findOne({ raw: true, where: { id: req.params.id } })
+            var itens = await Item.findAll({ raw: true, where: { idPedido: req.params.id } })
+            res.render("pedido/registrar", { pedido: pedido, itens: itens, produto: produto })
+        } else {
+            res.render("pedido/registrar", { produto: produto })
+        }
     }
 
     static async registrarPost(req, res) {
 
-
         try {
 
-            var pedido = req.body
             var id_pedido
             var idPedido
-            
-            if (req.body.id == undefined) {
+
+            var pedido = req.body
+
+            if (req.body.idPedido == "") {
                 idPedido = await Pedido.create(pedido)
                 id_pedido = idPedido.id
             } else {
-                idPedido = req.body.id
-                
-                var pedido = await Pedido.update(pedido, { where: { id: req.body.id } })
-                id_pedido=req.body.id
+
+                var confPedido = await Pedido.findOne({ where: { id: req.body.idPedido } })
+
+                if (confPedido) {
+                    idPedido = req.body.idPedido
+                    var pedido = await Pedido.update(pedido, { where: { id: req.body.idPedido } })
+                    id_pedido = req.body.idPedido
+                } else {
+                    return res.status(400).json({ message: "Id não encontrado" })
+                    
+                }
             }
-        
+
             if (pedido) {
-                
+
                 var items = req.body.itens
-                // console.log(items)
+
+                if (req.body.idPedido) {
+                    Item.destroy({ where: { idPedido: idPedido } })
+                }
+
                 items.map(async (item) => {
                     var searchItem = await Item.findOne({
                         raw: true
                         , where: {
-                            Id_pedido: id_pedido,
-                            item: item.item                      
+                            idPedido: id_pedido,
+                            item: item.item
                         }
                     })
                     // console.log(id_pedido)
                     if (searchItem) {
                         await Item.update(item, {
                             where: {
-                                Id_pedido: id_pedido,
+                                idPedido: id_pedido,
                                 item: item.item
                             }
                         })
-                                               
-                    } else {
-                        item.Id_pedido = id_pedido
-                        // console.log(item)
-                        var pedidoCriado = await Item.create(item)
-                        // console.log(pedidoCriado)
-                    }                  
-                })
-                res.send({  id_pedido: id_pedido, items: items})
-                
 
+                    } else {
+
+                        var searchProd = await Produto.findOne({where: { cod_produto: item.produto } })
+
+                        // console.log(searchProd)
+
+
+                        if (!searchProd) {
+                            return
+
+                            
+                            
+                        } else {
+                            var idProduto = searchProd.id
+                         item.idProduto = idProduto
+                       console.log(idProduto)    
+                       item.idPedido = id_pedido
+                            await Item.create(item)
+                            
+                        }
+
+                    }
+                })
+                res.json({message:"Registro realizado com sucesso",id_pedido: id_pedido})
             }
 
         } catch (error) {
-            return console.log("Aconteceu um  erro !" + error)
-
+            console.log(error)
         }
     }
 
@@ -70,7 +104,7 @@ module.exports = class AuthController {
     static async lista(req, res) {
 
         try {
-            const listaPedidos = await Item.findAll({
+            const listaPedidos = await Pedido.findAll({
             });
 
             const lista = listaPedidos.map((result) => result.get({ plain: true }));

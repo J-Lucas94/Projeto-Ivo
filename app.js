@@ -97,6 +97,7 @@ app.set("view engine", "handlebars");
 const User = require('./models/User')
 const Pedido = require('./models/Pedido')
 const Item = require('./models/Item')
+const Produto = require('./models/Produto')
 
 //public path
 

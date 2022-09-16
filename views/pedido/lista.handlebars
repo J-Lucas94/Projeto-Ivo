@@ -1,7 +1,7 @@
 <div class="list-group-item">
     <div class="d-flex">
         <div class="mr-auto p-2">
-            <h2 class="display-4 titulo">Items</h2>
+            <h2 class="display-4 titulo">Pedidos</h2>
         </div>
 
 
@@ -13,18 +13,23 @@
         <table id="example" class="display" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID pedido</th>
-                    <th>Item</th>
-                    <th>Produto</th>
-                    <th>GBU</th>
-                    <th>Valor Unit</th>
-                    <th>Desc1 </th>
-                    <th>Valor Unit 1</th>
-                    <th>Desc2 </th>
-                    <th>Valor Unit 2</th>
-                    <th>Desc Difal </th>
-                    <th>Valor Unit 3</th>
-                    <th>Total </th>
+                    <th>Vendedor</th>
+                    <th>Codigo do cliente</th>
+                    <th>Número da Loja</th>
+                    <th>Data</th>
+                    <th>Razão Social</th>
+                    <th>CEP </th>
+                    <th>Endereço</th>
+                    <th>Bairro</th>
+                    <th>Municipio</th>
+                    <th>UF</th>
+                    <th>E-mail</th>
+                    <th>Celular</th>
+                    <th>Contato</th>
+                    <th>CPF</th>
+                    <th>Inscrição</th>
+                    <th>Condição do Pagamento</th>
+                    <th>Transportadora</th>
                     
                     <th></th>
                 </tr>
@@ -32,18 +37,23 @@
             <tbody>
                 {{#each lista}}
                 <tr>
-                    <td>{{this.Id_pedido}}</td>
-                    <td>{{this.item}}</td>
-                    <td>{{this.produto}}</td>
-                    <td>{{this.gbu}}</td>
-                    <td>{{this.valor_unit}}</td>
-                    <td>{{this.desc1}}</td>
-                    <td>{{this.valor_unit1}}</td>
-                    <td>{{this.desc2}}</td>
-                    <td>{{this.valor_unit2}}</td>
-                    <td>{{this.desc_final}}</td>
-                    <td>{{this.valor_unit3}}</td>
-                    <td>{{this.total}}</td>
+                    <td>{{this.vendedor}}</td>
+                    <td>{{this.cod_cliente}}</td>
+                    <td>{{this.loja_numero}}</td>
+                    <td>{{this.data}}</td>
+                    <td>{{this.razao_social}}</td>
+                    <td>{{this.cep}}</td>
+                    <td>{{this.endereco}}</td>
+                    <td>{{this.bairro}}</td>
+                    <td>{{this.municipio}}</td>
+                    <td>{{this.uf}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.fone}}</td>
+                    <td>{{this.contato}}</td>
+                    <td>{{this.cpf}}</td>
+                    <td>{{this.inscricao}}</td>
+                    <td>{{this.cond_pagamento}}</td>
+                    <td>{{this.transportadora}}</td>
                     
                     
 

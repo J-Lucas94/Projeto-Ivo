@@ -5,7 +5,7 @@ const PedidoController = require('../controller/PedidoController')
 
 const { eAdmin } = require('../helpers/eAdmin')
 
-router.get('/registrar', PedidoController.registrar)
+router.get('/registrar/:id?', PedidoController.registrar)
 router.post('/registrar', PedidoController.registrarPost)
 router.get('/lista', PedidoController.lista)
 

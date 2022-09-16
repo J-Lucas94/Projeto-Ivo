@@ -2,6 +2,7 @@ var db = require('../db/db')
 
 const { Sequelize, DataTypes } = require('sequelize')
 const Pedido = require('./Pedido')
+const Produto = require('./Produto')
 
 const Item = db.define('Item', {
 
@@ -9,116 +10,76 @@ const Item = db.define('Item', {
     item: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "Esse campo não pode ser vazio !"
-            }
-        }
     },
     produto: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "Esse campo não pode ser vazio !"
-            }
-        }
     },
 
     gbu: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "Esse campo não pode ser vazio !"
-            }
-        }
     },
 
     valor_unit: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg : "Esse campo não pode ser vazio ! "
-            }
-        }
     },
 
     desc1: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg : "Esse campo não pode ser vazio ! "
-            }
-        }
     },
 
     valor_unit1: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg : "Esse campo não pode ser vazio ! "
-            }
-        }
     },
 
     desc2: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg : "Esse campo não pode ser vazio ! "
-            }
-        }
     },
 
     valor_unit2: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg : "Esse campo não pode ser vazio ! "
-            }
-        }
     },
 
     desc_final: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg : "Esse campo não pode ser vazio ! "
-            }
-        }
     },
 
     valor_unit3: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg : "Esse campo não pode ser vazio ! "
-            }
-        }
     },
 
     total: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            notEmpty: {
-                msg : "Esse campo não pode ser vazio ! "
-            }
-        }
-    },  
+    },
+
+    idPedido: {
+        references: { model : 'Pedidos', key: 'id'},
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+    idProduto: {
+        references: { model : 'Produtos', key: 'id'},
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
 
 })
 
-//  db.sync({force:true})
+// db.sync({force:true})
 
-Item.belongsTo(Pedido, {foreignKey: 'Id_pedido', allowNull: false})
+
+Item.belongsTo(Pedido, { allowNull: false, constraint:true, foreignKey: 'idPedido'})
+Item.belongsTo(Produto, { allowNull: false, constraint:true, foreignKey: 'idProduto'})
+
 
 module.exports = Item

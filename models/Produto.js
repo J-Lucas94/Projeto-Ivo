@@ -2,24 +2,23 @@ var db = require('../db/db')
 
 const { Sequelize, DataTypes } = require('sequelize')
 
-const User = db.define('User', {
-    name: {
+const Produto = db.define('Produto', {
+    categoria: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    cod_produto: {
         type: DataTypes.STRING,
         allowNull: false,
     },
 
-    password : {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-
-    email: {
+    descricao : {
         type: DataTypes.STRING,
         allowNull: false,
     }
-
 })
 
-// User.sync({force:true})
+// Produto.sync({force:true})
 
-module.exports = User
+
+module.exports = Produto
