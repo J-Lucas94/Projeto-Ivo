@@ -3,6 +3,7 @@ const Item = require('../models/Item')
 const Produto = require('../models/Produto')
 const sequelize = require('../db/db')
 const { raw } = require('body-parser')
+const e = require('connect-flash')
 
 module.exports = class AuthController {
     static async registrar(req, res) {
@@ -40,7 +41,7 @@ module.exports = class AuthController {
                     id_pedido = req.body.idPedido
                 } else {
                     return res.status(400).json({ message: "Id não encontrado" })
-                    
+
                 }
             }
 
@@ -71,28 +72,23 @@ module.exports = class AuthController {
 
                     } else {
 
-                        var searchProd = await Produto.findOne({where: { cod_produto: item.produto } })
 
-                        // console.log(searchProd)
+                        var searchProd = await Produto.findOne({ where: { cod_produto: item.produto } })
 
+                        if (searchProd) {
 
-                        if (!searchProd) {
-                            return
-
-                            
-                            
-                        } else {
                             var idProduto = searchProd.id
-                         item.idProduto = idProduto
-                       console.log(idProduto)    
-                       item.idPedido = id_pedido
+                            item.idProduto = idProduto
+                            item.idPedido = id_pedido
                             await Item.create(item)
                             
+                        } else {
+                            var itemP = item.produto
+                            return res.status(400).json({ message: "Produto não encontrado", itemP})
                         }
-
                     }
                 })
-                res.json({message:"Registro realizado com sucesso",id_pedido: id_pedido})
+                // return res.json({ message: "Registro realizado com sucesso", id_pedido: id_pedido })
             }
 
         } catch (error) {

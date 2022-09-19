@@ -175,12 +175,8 @@
                     placeholder="Transportadora..." value="{{pedido.transportadora}}" required>
                 <small id="erro-transportadora" class="vermelho"></small>
             </div>
-
-            <div class="form-group col-12">
-                <label>Aplicar Desconto de Diferença de ICMS</label>
-                <input class="form-check-input" type="checkbox" name="">
-            </div>
         </div>
+
     </form>
 
     <div class="row">
@@ -190,18 +186,18 @@
                 <table id="tabela" class="table table-responsive">
                     <thead>
                         <tr>
-                            
+
                             <th id="erro-item">Item</th>
-                            <th id="erro-produto">Produto</th>                            
+                            <th id="erro-produto">Produto</th>
                             <th id="erro-descricao">Descrição</th>
                             <th id="erro-gbu">GBU</th>
                             <th id="erro-valor_unit">Valor Unit</th>
                             <th>Desc1 </th>
-                            <th id="erro-valor_unit1">Valor Unit 1</th>
+                            <th id="erro-valor_unit1">Valor Unit1</th>
                             <th>Desc2 </th>
-                            <th id="erro-valor_unit2">Valor Unit 2</th>
+                            <th id="erro-valor_unit2">Valor Unit2</th>
                             <th>Desc Final </th>
-                            <th id="erro-valor_unit3">Valor Unit 3</th>
+                            <th id="erro-valor_unit3">Valor Unit3</th>
                             <th id="erro-total">Total </th>
                             <th>Ações </th>
 
@@ -217,7 +213,7 @@
                         <tr>
 
                             <div>
-                            <td><input id="item" class="item" type="text" value="{{this.item}}" required></td>
+                                <td><input id="item" class="item" type="text" value="{{this.item}}" required></td>
                             </div>
                             <td><input id="produto" class="produto" type="text" list="produtos" value="{{this.produto}}"
                                     required></td>
@@ -260,28 +256,24 @@
 
                         {{else}}
 
-                            <tr>
+                        <tr>
 
-                            
+
                             <td><input id="item" class="item" type="text" value="1" required></td>
-                            
-                            <td><input id="produto" class="produto" type="text" pattern="{{produtos.cod_produto}}" list="produtos" value=""
-                                    required></td>
-                                    
+
+                            <td><input id="produto"  onchange="produtoVal(this.value)" class="produto" type="text" list="produtos" onchange="" value="" required></td>
+
                             <td><input id="descricao" class="descricao" type="text" value="" readonly>
                             </td>
-                            <td><input id="gbu" class="gbu" style="text-align: right;" type="text" value=""
-                                    required>
+                            <td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="" required>
                             </td>
                             <td><input id="valor_unit" class="valor_unit" style="text-align: right;" type="text"
                                     value="" required></td>
-                            <td><input id="desc1" class="desc1" style="text-align: right;" type="text"
-                                    value="">
+                            <td><input id="desc1" class="desc1" style="text-align: right;" type="text" value="">
                             </td>
                             <td><input id="valor_unit1" class="valor_unit1" style="text-align: right;" type="text"
                                     value="" required></td>
-                            <td><input id="desc2" class="desc2" style="text-align: right;" type="text"
-                                    value="">
+                            <td><input id="desc2" class="desc2" style="text-align: right;" type="text" value="">
                             </td>
                             <td><input id="valor_unit2" class="valor_unit2" style="text-align: right;" type="text"
                                     value="" required></td>
@@ -291,8 +283,8 @@
                             </td>
                             <td><input id="valor_unit3" class="valor_unit3" style="text-align: right;" type="text"
                                     value="" required></td>
-                            <td><input id="total" class="total" style="text-align: right;" type="text"
-                                    value="" required>
+                            <td><input id="total" class="total" style="text-align: right;" type="text" value=""
+                                    required>
 
                             </td>
                             <td class="acoes">
@@ -303,7 +295,7 @@
 
                         </tr>
 
-                         {{/if}}
+                        {{/if}}
 
                     </tbody>
                     <button class="btn btn-primary col-1 m-center" onclick="adicionarCampo()" type="button">+</button>
@@ -320,7 +312,7 @@
 
 <datalist id="produtos">
     {{#each produto}}
-    <option value="{{this.cod_produto}}">{{this.categoria}} - {{this.descricao}}</option>
+    <option class="listaP" value="{{this.cod_produto}}">{{this.categoria}} - {{this.descricao}}</option>
     {{/each}}
 </datalist>
 
@@ -328,6 +320,27 @@
 
 
 <script>
+    
+    
+    function produtoVal (valor) {
+       var lista = document.querySelectorAll('.listaP')
+
+    var lResult = false;
+
+            lista.forEach((item) => {
+                if(item.value == valor){
+                    lResult = true;
+                    return
+                }
+            });
+       
+            if(lResult == false){
+            swal("Error !", "Produto não encontrado", "error")
+            }
+       
+   
+       // console.log(valores)
+    }
 
     var controleCampo = 1;
 
@@ -336,19 +349,19 @@
         console.log(controleCampo)
         document.getElementById('novalinha').insertAdjacentHTML('beforeend',
             '<tr id="campo' + controleCampo +
-             '" ><td><input id="item" class="item" type="text" value="' + controleCampo +
-              '"></td><td><input id="produto' + controleCampo +
-              '"class="produto" type="text" list="produtos"></td><td><input id="descricao' + controleCampo +
-              '" class="descricao" type="text" readonly></td><td><input id="gbu' + controleCampo +
-              '" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"></td><td><input id="valor_unit' + controleCampo +
-              '" class="valor_unit" style="text-align: right;" type="text"value="{{this.valor_unit}}"></td><td><input id="desc1' + controleCampo +
-              '" class="desc1" style="text-align: right;" type="text" value="{{this.desc1}}"></td><td><input id="valor_unit1' + controleCampo +
-              '" class="valor_unit1" style="text-align: right;" type="text"value="{{this.valor_unit1}}"></td><td><input id="desc2' + controleCampo +
-              '" class="desc2" style="text-align: right;" type="text" value="{{this.desc2}}"></td><td><input id="valor_unit2' + controleCampo +
-              '" class="valor_unit2" style="text-align: right;" type="text"value="{{this.valor_unit2}}"></td><td><input id="desc_final' + controleCampo +
-              '" class="desc_final" style="text-align: right;" type="text"value="{{this.desc_final}}"></td><td><input id="valor_unit3' + controleCampo +
-              '" class="valor_unit3" style="text-align: right;" type="text"value="{{this.valor_unit3}}"></td><td><input id="total' + controleCampo +
-              '" class="total" style="text-align: right;" type="text" value="{{this.total}}"></td></td><td class="acoes"><span class="btn-danger">Excluir</span></td></tr>'
+            '" ><td><input id="item" class="item" type="text" value="' + controleCampo +
+            '"></td><td><input id="produto' + controleCampo +
+            '"class="produto" type="text" list="produtos"></td><td><input id="descricao' + controleCampo +
+            '" class="descricao" type="text" readonly></td><td><input id="gbu' + controleCampo +
+            '" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"></td><td><input id="valor_unit' + controleCampo +
+            '" class="valor_unit" style="text-align: right;" type="text"value="{{this.valor_unit}}"></td><td><input id="desc1' + controleCampo +
+            '" class="desc1" style="text-align: right;" type="text" value="{{this.desc1}}"></td><td><input id="valor_unit1' + controleCampo +
+            '" class="valor_unit1" style="text-align: right;" type="text"value="{{this.valor_unit1}}"></td><td><input id="desc2' + controleCampo +
+            '" class="desc2" style="text-align: right;" type="text" value="{{this.desc2}}"></td><td><input id="valor_unit2' + controleCampo +
+            '" class="valor_unit2" style="text-align: right;" type="text"value="{{this.valor_unit2}}"></td><td><input id="desc_final' + controleCampo +
+            '" class="desc_final" style="text-align: right;" type="text"value="{{this.desc_final}}"></td><td><input id="valor_unit3' + controleCampo +
+            '" class="valor_unit3" style="text-align: right;" type="text"value="{{this.valor_unit3}}"></td><td><input id="total' + controleCampo +
+            '" class="total" style="text-align: right;" type="text" value="{{this.total}}"></td></td><td class="acoes"><span class="btn-danger">Excluir</span></td></tr>'
         )
     }
 
@@ -555,6 +568,7 @@
                     "total": total[i].value,
                 }
 
+                console.log(itens)
                 itens.push(items)
 
 
@@ -608,7 +622,7 @@
                     document.getElementById('erro-valor_unit1').style.color = 'black';
                 }
 
-                 if (items.valor_unit2 == "") {
+                if (items.valor_unit2 == "") {
                     document.getElementById('erro-valor_unit2').innerHTML = "Preencha o campo valor_unit2!";
                     document.getElementById('erro-valor_unit2').style.color = 'red';
                     document.getElementById('valor_unit2').focus();
@@ -618,7 +632,7 @@
                     document.getElementById('erro-valor_unit2').style.color = 'black';
                 }
 
-                 if (items.valor_unit3 == "") {
+                if (items.valor_unit3 == "") {
                     document.getElementById('erro-valor_unit3').innerHTML = "Preencha o campo valor_unit3!";
                     document.getElementById('erro-valor_unit3').style.color = 'red';
                     document.getElementById('valor_unit3').focus();
@@ -628,7 +642,7 @@
                     document.getElementById('erro-valor_unit3').style.color = 'black';
                 }
 
-                 if (items.total == "") {
+                if (items.total == "") {
                     document.getElementById('erro-total').innerHTML = "Preencha o campo total!";
                     document.getElementById('erro-total').style.color = 'red';
                     document.getElementById('total').focus();
@@ -654,21 +668,21 @@
             })
 
                 .then((response) => response.json())
-                
+
                 .then((data) => {
                     console.log("esse é a data", data)
 
-                if(data.message == "Produto não encontrado"){
-                    swal("Error !", "Esse produto não foi encontrado: " + data.itemP, "error");
-                }
+                    if (data.message == "Produto não encontrado") {
+                        swal("Error !", "Esse produto não foi encontrado: " + data.itemP, "error");
+                    }
 
-                if(data.message == "Id não encontrado"){
-                    swal("Error !", "Id não encontrado!", "error");
-                }
+                    if (data.message == "Id não encontrado") {
+                        swal("Error !", "Id não encontrado!", "error");
+                    }
 
-                if(data.message == "Registro realizado com sucesso"){
-                    swal("Sucesso !", "Registro realizado com sucesso", "success")
-                }
+                    if (data.message == "Registro realizado com sucesso") {
+                        swal("Sucesso !", "Registro realizado com sucesso", "success")
+                    }
 
                     if (data.id_pedido) {
                         document.getElementById('idPedido').value = data.id_pedido
@@ -682,6 +696,8 @@
     } catch (err) {
         console.log(`Erro: ${err}`)
     }
+
+
 
     //API VIACEP 
 
@@ -700,7 +716,7 @@
 
     }
 
-    const cepValido = (cep) =>  cep.length == 8;
+    const cepValido = (cep) => cep.length == 8;
 
     const pesquisarCep = async () => {
         limparFormulario();
