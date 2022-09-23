@@ -217,24 +217,28 @@
                             <td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"
                                     required>
                             </td>
-                            <td><input id="valor_unit" class="valor_unit" style="text-align: right;" type="text"
+                            <td><input id="valor_unit" class="valor_unit" onchange="valor1(this.value)" style="text-align: right;" type="text"
                                     value="{{this.valor_unit}}" required></td>
-                            <td><input id="desc1" class="desc1" style="text-align: right;" type="text"
+
+                            <td><input id="desc1" class="desc1" onchange="valor1(this.value)" style="text-align: right;" type="text"
                                     value="{{this.desc1}}">
                             </td>
-                            <td><input id="valor_unit1" class="valor_unit1" style="text-align: right;" type="text"
+                            <td><input id="valor_unit1" class="valor_unit1" onchange="valor1(this.value)" style="text-align: right;" type="text"
                                     value="{{this.valor_unit1}}" required></td>
-                            <td><input id="desc2" class="desc2" style="text-align: right;" type="text"
+
+                            <td><input id="desc2" class="desc2" onchange="valor1(this.value)" style="text-align: right;" type="text"
                                     value="{{this.desc2}}">
                             </td>
-                            <td><input id="valor_unit2" class="valor_unit2" style="text-align: right;" type="text"
+                            <td><input id="valor_unit2" class="valor_unit2" onchange="valor1(this.value)" style="text-align: right;" type="text"
                                     value="{{this.valor_unit2}}" required></td>
-                            <td><input id="desc_final" class="desc_final" style="text-align: right;" type="text"
+
+                            <td><input id="desc_final" class="desc_final" onchange="valor1(this.value)" style="text-align: right;" type="text"
                                     value="{{this.desc_final}}">
 
                             </td>
-                            <td><input id="valor_unit3" class="valor_unit3" style="text-align: right;" type="text"
+                            <td><input id="valor_unit3" class="valor_unit3" onchange="valor1(this.value)" style="text-align: right;" type="text"
                                     value="{{this.valor_unit3}}" required></td>
+
                             <td><input id="total" class="total" style="text-align: right;" type="text"
                                     value="{{this.total}}" required>
 
@@ -396,29 +400,12 @@
     }
 
 
-
-
-
-
-
     var controleCampo = 1;
 
-    function adicionarCampo(idCampo) {
+    function adicionarCampo() {
         controleCampo++;
         document.getElementById('novalinha').insertAdjacentHTML('beforeend',
-            '<tr id="campo' + controleCampo +
-            '" ><td><input id="item" class="item" type="text" value="' + controleCampo +
-            '"></td><td><input id="produto' + controleCampo + '"class="produto" onchange="produtoVal(this.value)" style="text-align: right;" type="text" type="text" list="produtos"></td><td><input id="descricao' + controleCampo +
-            '" class="descricao" type="text" readonly></td><td><input id="gbu' + controleCampo +
-            '" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"></td><td><input id="valor_unit' + controleCampo +
-            '" class="valor_unit" style="text-align: right;" type="text"value="{{this.valor_unit}}"></td><td><input id="desc1' + controleCampo +
-            '" class="desc1" style="text-align: right;" type="text" value="{{this.desc1}}"></td><td><input id="valor_unit1' + controleCampo +
-            '" class="valor_unit1" style="text-align: right;" type="text"value="{{this.valor_unit1}}"></td><td><input id="desc2' + controleCampo +
-            '" class="desc2" style="text-align: right;" type="text" value="{{this.desc2}}"></td><td><input id="valor_unit2' + controleCampo +
-            '" class="valor_unit2" style="text-align: right;" type="text"value="{{this.valor_unit2}}"></td><td><input id="desc_final' + controleCampo +
-            '" class="desc_final" style="text-align: right;" type="text"value="{{this.desc_final}}"></td><td><input id="valor_unit3' + controleCampo +
-            '" class="valor_unit3" style="text-align: right;" type="text"value="{{this.valor_unit3}}"></td><td><input id="total' + controleCampo +
-            '" class="total" style="text-align: right;" type="text" value="{{this.total}}"></td></td><td class="acoes"><span class="btn-danger">Excluir</span></td></tr>'
+            '<tr id="campo" ><td><input id="item" class="item"  type="text" value=""></td><td><input id="produto"class="produto" onchange="produtoVal(this.value)" style="text-align: right;" type="text" type="text" list="produtos"></td><td><input id="descricao" class="descricao" type="text" readonly></td><td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"></td><td><input id="valor_unit" class="valor_unit" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit}}"></td><td><input id="desc1" class="desc1" onchange="valor1(this.value)" style="text-align: right;" type="text" value="{{this.desc1}}"></td><td><input id="valor_unit1" class="valor_unit1" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit1}}"></td><td><input id="desc2" class="desc2" onchange="valor1(this.value)" style="text-align: right;" type="text" value="{{this.desc2}}"></td><td><input id="valor_unit2" class="valor_unit2" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit2}}"></td><td><input id="desc_final" class="desc_final" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.desc_final}}"></td><td><input id="valor_unit3" class="valor_unit3" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit3}}"></td><td><input id="total" class="total" style="text-align: right;" type="text" value="{{this.total}}"></td></td><td class="acoes"><span class="btn-danger">Excluir</span></td></tr>'
         )
     }
 

@@ -69,7 +69,7 @@ module.exports = class AuthController {
                     var searchProd = await Produto.findOne({ where: { cod_produto: item.produto } })
 
                     if (!searchProd){
-                            return
+                            return  
                     }
 
                     if (searchItem) {
