@@ -23,6 +23,10 @@ module.exports = class AuthController {
 
         try {
 
+            if(!req.body.itens){
+                return res.status(400).json({message: "Item não encontrado"})
+            }
+
             var id_pedido
             var idPedido
 
@@ -61,7 +65,13 @@ module.exports = class AuthController {
                             item: item.item
                         }
                     })
-                    // console.log(id_pedido)
+
+                    var searchProd = await Produto.findOne({ where: { cod_produto: item.produto } })
+
+                    if (!searchProd){
+                            return
+                    }
+
                     if (searchItem) {
                         await Item.update(item, {
                             where: {
@@ -71,24 +81,16 @@ module.exports = class AuthController {
                         })
 
                     } else {
-
-
-                        var searchProd = await Produto.findOne({ where: { cod_produto: item.produto } })
-
-                        if (searchProd) {
-
                             var idProduto = searchProd.id
                             item.idProduto = idProduto
                             item.idPedido = id_pedido
-                            await Item.create(item)
-                            
-                        } else {
-                            var itemP = item.produto
-                            return res.status(400).json({ message: "Produto não encontrado", itemP})
-                        }
+                            await Item.create(item)       
                     }
                 })
-                // return res.json({ message: "Registro realizado com sucesso", id_pedido: id_pedido })
+               if(pedido && items) {return res.json({ message: "Registro realizado com sucesso", id_pedido: id_pedido })
+            }else{
+                return res.status(400).json({message: "Não foi possivel realizar o pedido"})
+            }
             }
 
         } catch (error) {

@@ -9,7 +9,6 @@
     Registro realizado com sucesso !
 </div>
 
-
 <div class="container-fluid ">
     <div class="acoes">
     </div>
@@ -24,14 +23,12 @@
                 <h3>Barueri - São Paulo</h3>
             </div>
 
-
             <div class="col-6 mt-3 " id="header2">
 
                 <div class="form-group">
                     <label>ID Pedido</label>
                     <input class="form-control" type="text" name="idPedido" id="idPedido" placeholder="ID Pedido"
                         value="{{pedido.id}}" required>
-
 
                 </div>
                 <form>
@@ -63,7 +60,6 @@
                         <small id="erro-data" class="vermelho"></small>
                     </div>
                 </form>
-
 
             </div>
         </div>
@@ -204,7 +200,6 @@
                         </tr>
                     </thead>
 
-
                     <tbody id="novalinha">
 
                         {{#if itens}}
@@ -215,8 +210,8 @@
                             <div>
                                 <td><input id="item" class="item" type="text" value="{{this.item}}" required></td>
                             </div>
-                            <td><input id="produto" class="produto" type="text" list="produtos" value="{{this.produto}}"
-                                    required></td>
+                            <td><input id="produto" class="produto" type="text" list="produtos"
+                                    style="text-align: right;" type="text" value="{{this.produto}}" required></td>
                             <td><input id="descricao" class="descricao" type="text" value="{{this.updatedAt}}" readonly>
                             </td>
                             <td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"
@@ -258,30 +253,32 @@
 
                         <tr>
 
-
                             <td><input id="item" class="item" type="text" value="1" required></td>
 
-                            <td><input id="produto"  onchange="produtoVal(this.value)" class="produto" type="text" list="produtos" onchange="" value="" required></td>
+                            <td><input id="produto" onchange="produtoVal(this.value)" class="produto"
+                                    style="text-align: right;" type="text" type="text" list="produtos" value=""
+                                    required></td>
 
                             <td><input id="descricao" class="descricao" type="text" value="" readonly>
                             </td>
                             <td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="" required>
                             </td>
-                            <td><input id="valor_unit" class="valor_unit" style="text-align: right;" type="text"
-                                    value="" required></td>
-                            <td><input id="desc1" class="desc1" style="text-align: right;" type="text" value="">
+                            <td><input id="valor_unit" onchange="valor1(this.value)" class="valor_unit"
+                                    style="text-align: right;" type="text" value="" required></td>
+                            <td><input id="desc1" class="desc1" onchange="valor1(this.value)" style="text-align: right;"
+                                    type="text" value="">
                             </td>
-                            <td><input id="valor_unit1" class="valor_unit1" style="text-align: right;" type="text"
-                                    value="" required></td>
-                            <td><input id="desc2" class="desc2" style="text-align: right;" type="text" value="">
+                            <td><input id="valor_unit1" class="valor_unit1" onchange="valor1(this.value)"
+                                    style="text-align: right;" type="text" value="" required></td>
+                            <td><input id="desc2" class="desc2" onchange="valor1(this.value)" style="text-align: right;" type="text" value="">
                             </td>
-                            <td><input id="valor_unit2" class="valor_unit2" style="text-align: right;" type="text"
+                            <td><input id="valor_unit2" class="valor_unit2" onchange="valor1(this.value)" style="text-align: right;" type="text"
                                     value="" required></td>
-                            <td><input id="desc_final" class="desc_final" style="text-align: right;" type="text"
+                            <td><input id="desc_final" class="desc_final" onchange="valor1(this.value)" style="text-align: right;" type="text"
                                     value="">
 
                             </td>
-                            <td><input id="valor_unit3" class="valor_unit3" style="text-align: right;" type="text"
+                            <td><input id="valor_unit3" class="valor_unit3" onchange="valor1(this.value)" style="text-align: right;" type="text"
                                     value="" required></td>
                             <td><input id="total" class="total" style="text-align: right;" type="text" value=""
                                     required>
@@ -298,7 +295,8 @@
                         {{/if}}
 
                     </tbody>
-                    <button class="btn btn-primary col-1 m-center" onclick="adicionarCampo()" type="button">+</button>
+                    <button class="btn btn-primary col-1 m-center" onclick="adicionarCampo(controleCampo)"
+                        type="button">+</button>
                 </table>
 
             </div>
@@ -318,40 +316,99 @@
 
 
 
-
 <script>
-    
-    
-    function produtoVal (valor) {
-       var lista = document.querySelectorAll('.listaP')
 
-    var lResult = false;
+    function produtoVal(valor) {
 
-            lista.forEach((item) => {
-                if(item.value == valor){
-                    lResult = true;
-                    return
-                }
-            });
-       
-            if(lResult == false){
-            swal("Error !", "Produto não encontrado", "error")
+        var lista = document.querySelectorAll('.listaP')
+
+
+        var lResult = false;
+
+        lista.forEach((item) => {
+            if (item.value == valor) {
+                lResult = true;
+                return
             }
-       
-   
-       // console.log(valores)
+        });
+
+        if (lResult == false) {
+            swal("Error !", "Produto não encontrado!", "error");
+            document.getElementById('form1').disabled = true;
+            document.getElementById('erro-produto').innerHTML = "Produto não encontrado!";
+            document.getElementById('erro-produto').style.color = 'red';
+            return false;
+        } else {
+            document.getElementById('erro-produto').innerHTML = "Produto";
+            document.getElementById('erro-produto').style.color = 'black';
+            document.getElementById('form1').disabled = false;
+        }
     }
+
+    function valor1(valor) {
+        var valor_unit = document.querySelector('.valor_unit')
+        var desc1 = document.querySelector('.desc1')
+        var valor_unit1 = document.querySelector('.valor_unit1')
+        var desc2 = document.querySelector('.desc2')
+        var valor_unit2 = document.querySelector('.valor_unit2')
+        var desc_final = document.querySelector('.desc_final')
+        var valor_unit3 = document.querySelector('.valor_unit3')
+        var total = document.querySelector('.total')
+
+        var calculo = Number(desc1.value) * Number(valor_unit.value) / 100
+        var calc = calculo - Number(valor_unit.value)
+        var final = Math.abs(calc)
+        
+        if(desc2){
+            var calc3 = Number(valor_unit1.value) * Number(desc2.value) / 100
+            var calc4 = calc3 - Number(valor_unit1.value)
+            var final2 = Math.abs(calc4)
+            //console.log("FINAL2", final2)            
+        }
+
+        if (valor_unit1) {
+            var calc2 = final + final2
+            console.log("OK", calc2)
+        }
+        
+        if(desc_final){
+            var calc6 = Number(valor_unit2.value) * Number(desc_final.value) / 100
+            var calc7 = calc6 - Number(valor_unit2.value)
+            var final3 = Math.abs(calc7)
+            console.log("FINAL3",final3)
+        }
+
+        if(valor_unit2){
+            var calc5 = final3 + calc2
+            console.log("FINAL4", calc5)            
+        }
+
+
+        if(valor_unit3){
+            var calc8 = calc5 + Number(valor_unit3.value)
+            console.log("FINAL5",calc8)
+        }
+
+        
+        
+        document.querySelector('.total').value = calc8
+        
+    }
+
+
+
+
+
+
 
     var controleCampo = 1;
 
-    function adicionarCampo() {
+    function adicionarCampo(idCampo) {
         controleCampo++;
-        console.log(controleCampo)
         document.getElementById('novalinha').insertAdjacentHTML('beforeend',
             '<tr id="campo' + controleCampo +
             '" ><td><input id="item" class="item" type="text" value="' + controleCampo +
-            '"></td><td><input id="produto' + controleCampo +
-            '"class="produto" type="text" list="produtos"></td><td><input id="descricao' + controleCampo +
+            '"></td><td><input id="produto' + controleCampo + '"class="produto" onchange="produtoVal(this.value)" style="text-align: right;" type="text" type="text" list="produtos"></td><td><input id="descricao' + controleCampo +
             '" class="descricao" type="text" readonly></td><td><input id="gbu' + controleCampo +
             '" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"></td><td><input id="valor_unit' + controleCampo +
             '" class="valor_unit" style="text-align: right;" type="text"value="{{this.valor_unit}}"></td><td><input id="desc1' + controleCampo +
@@ -365,6 +422,9 @@
         )
     }
 
+
+
+
     var tabela = document.querySelector('#tabela');
 
     tabela.addEventListener("click", ((event) => {
@@ -373,11 +433,8 @@
             var celula = elementoClicado.parentNode;
             var linha = celula.parentNode;
             linha.remove();
-
         }
     }))
-
-
 
     //Fetch Pedido
     try {
@@ -571,7 +628,6 @@
                 console.log(itens)
                 itens.push(items)
 
-
                 if (items.item == "") {
                     document.getElementById('erro-item').innerHTML = "Preencha o campo item !";
                     document.getElementById('erro-item').style.color = 'red';
@@ -668,7 +724,6 @@
             })
 
                 .then((response) => response.json())
-
                 .then((data) => {
                     console.log("esse é a data", data)
 
@@ -687,18 +742,13 @@
                     if (data.id_pedido) {
                         document.getElementById('idPedido').value = data.id_pedido
                     }
-
                 })
-
         })
 
 
     } catch (err) {
         console.log(`Erro: ${err}`)
     }
-
-
-
     //API VIACEP 
 
     const limparFormulario = (endereco) => {
@@ -713,7 +763,6 @@
         document.querySelector('#municipio').value = endereco.localidade;
         document.querySelector('#uf').value = endereco.uf;
         document.querySelector('#endereco').value = endereco.logradouro;
-
     }
 
     const cepValido = (cep) => cep.length == 8;
@@ -733,14 +782,12 @@
                 document.querySelector('#municipio').disabled = true;
                 document.querySelector('#uf').disabled = true;
 
-
             } else {
                 document.querySelector('#endereco').disabled = false;
                 document.querySelector('#bairro').disabled = false;
                 document.querySelector('#municipio').disabled = false;
                 document.querySelector('#uf').disabled = false;
                 preencherFormulario(endereco);
-
             }
 
         } else {
@@ -748,13 +795,11 @@
             document.querySelector('#bairro').disabled = true;
             document.querySelector('#municipio').disabled = true;
             document.querySelector('#uf').disabled = true;
-
         }
     }
 
     document.querySelector('#cep')
         .addEventListener('focusout', pesquisarCep);
-
 
     window.addEventListener('load', function () {
 
