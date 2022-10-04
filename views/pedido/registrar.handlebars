@@ -200,7 +200,7 @@
                         </tr>
                     </thead>
 
-                    <tbody id="novalinha">
+                    <tbody id="itens">
 
                         {{#if itens}}
 
@@ -217,27 +217,27 @@
                             <td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"
                                     required>
                             </td>
-                            <td><input id="valor_unit" class="valor_unit" onchange="valor1(this.value)" style="text-align: right;" type="text"
-                                    value="{{this.valor_unit}}" required></td>
+                            <td><input id="valor_unit" class="valor_unit" onchange="valor1(this.value)"
+                                    style="text-align: right;" type="text" value="{{this.valor_unit}}" required></td>
 
-                            <td><input id="desc1" class="desc1" onchange="valor1(this.value)" style="text-align: right;" type="text"
-                                    value="{{this.desc1}}">
+                            <td><input id="desc1" class="desc1" onchange="valor1(this.value)" style="text-align: right;"
+                                    type="text" value="{{this.desc1}}">
                             </td>
-                            <td><input id="valor_unit1" class="valor_unit1" onchange="valor1(this.value)" style="text-align: right;" type="text"
-                                    value="{{this.valor_unit1}}" required></td>
+                            <td><input id="valor_unit1" class="valor_unit1" onchange="valor1(this.value)"
+                                    style="text-align: right;" type="text" value="{{this.valor_unit1}}" required></td>
 
-                            <td><input id="desc2" class="desc2" onchange="valor1(this.value)" style="text-align: right;" type="text"
-                                    value="{{this.desc2}}">
+                            <td><input id="desc2" class="desc2" onchange="valor1(this.value)" style="text-align: right;"
+                                    type="text" value="{{this.desc2}}">
                             </td>
-                            <td><input id="valor_unit2" class="valor_unit2" onchange="valor1(this.value)" style="text-align: right;" type="text"
-                                    value="{{this.valor_unit2}}" required></td>
+                            <td><input id="valor_unit2" class="valor_unit2" onchange="valor1(this.value)"
+                                    style="text-align: right;" type="text" value="{{this.valor_unit2}}" required></td>
 
-                            <td><input id="desc_final" class="desc_final" onchange="valor1(this.value)" style="text-align: right;" type="text"
-                                    value="{{this.desc_final}}">
+                            <td><input id="desc_final" class="desc_final" onchange="valor1(this.value)"
+                                    style="text-align: right;" type="text" value="{{this.desc_final}}">
 
                             </td>
-                            <td><input id="valor_unit3" class="valor_unit3" onchange="valor1(this.value)" style="text-align: right;" type="text"
-                                    value="{{this.valor_unit3}}" required></td>
+                            <td><input id="valor_unit3" class="valor_unit3" onchange="valor1(this.value)"
+                                    style="text-align: right;" type="text" value="{{this.valor_unit3}}" required></td>
 
                             <td><input id="total" class="total" style="text-align: right;" type="text"
                                     value="{{this.total}}" required>
@@ -257,49 +257,13 @@
 
                         <tr>
 
-                            <td><input id="item" class="item" type="text" value="1" required></td>
-
-                            <td><input id="produto" onchange="produtoVal(this.value)" class="produto"
-                                    style="text-align: right;" type="text" type="text" list="produtos" value=""
-                                    required></td>
-
-                            <td><input id="descricao" class="descricao" type="text" value="" readonly>
-                            </td>
-                            <td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="" required>
-                            </td>
-                            <td><input id="valor_unit" onchange="valor1(this.value)" class="valor_unit"
-                                    style="text-align: right;" type="text" value="" required></td>
-                            <td><input id="desc1" class="desc1" onchange="valor1(this.value)" style="text-align: right;"
-                                    type="text" value="">
-                            </td>
-                            <td><input id="valor_unit1" class="valor_unit1" onchange="valor1(this.value)"
-                                    style="text-align: right;" type="text" value="" required></td>
-                            <td><input id="desc2" class="desc2" onchange="valor1(this.value)" style="text-align: right;" type="text" value="">
-                            </td>
-                            <td><input id="valor_unit2" class="valor_unit2" onchange="valor1(this.value)" style="text-align: right;" type="text"
-                                    value="" required></td>
-                            <td><input id="desc_final" class="desc_final" onchange="valor1(this.value)" style="text-align: right;" type="text"
-                                    value="">
-
-                            </td>
-                            <td><input id="valor_unit3" class="valor_unit3" onchange="valor1(this.value)" style="text-align: right;" type="text"
-                                    value="" required></td>
-                            <td><input id="total" class="total" style="text-align: right;" type="text" value=""
-                                    required>
-
-                            </td>
-                            <td class="acoes">
-                                <span class="btn-danger">
-                                    Excluir
-                                </span>
-                            </td>
 
                         </tr>
 
                         {{/if}}
 
                     </tbody>
-                    <button class="btn btn-primary col-1 m-center" onclick="adicionarCampo(controleCampo)"
+                    <button class="btn btn-primary col-1 m-center" onclick="javascript:preencher(event)"
                         type="button">+</button>
                 </table>
 
@@ -319,13 +283,150 @@
 </datalist>
 
 
-
 <script>
+
+    async function preencher(event) {
+        var text = await navigator.clipboard.readText()
+        text.split('\n').map((linha) => {
+            var produto = linha.split('\r')[0]
+
+            var tr = document.createElement('tr')
+            var td = document.createElement('td')
+            var input = document.createElement('input')
+            tr.appendChild(td)
+            td.appendChild(input)
+            input.value = produto
+            input.setAttribute("name", "item")
+            input.setAttribute("class", "item")
+            input.setAttribute("id", "item")
+            input.setAttribute("list", "item")
+            input.setAttribute("type", "text")
+            
+
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "produto")
+            input.setAttribute("class", "produto")
+            input.setAttribute("id", "produto")
+            input.setAttribute("onchange", "produtoVal(this.value)")
+            input.setAttribute("list", "produtos")
+            input.setAttribute("type", "text")
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "descricao")
+            input.setAttribute("class", "descricao")
+            input.setAttribute("id", "descricao")
+            input.setAttribute("type", "text")
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "gbu")
+            input.setAttribute("class", "gbu")
+            input.setAttribute("id", "gbu")
+            input.setAttribute("type", "gbu")
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "valor_unit")
+            input.setAttribute("class", "valor_unit")
+            input.setAttribute("id", "valor_unit")
+            input.setAttribute("type", "text")
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "desc1")
+            input.setAttribute("class", "desc1")
+            input.setAttribute("id", "desc1")
+            input.setAttribute("type", "text")
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "valor_unit1")
+            input.setAttribute("class", "valor_unit1")
+            input.setAttribute("id", "valor_unit1")
+            input.setAttribute("type", "text")
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "desc2")
+            input.setAttribute("class", "desc2")
+            input.setAttribute("id", "desc2")
+            input.setAttribute("type", "text")
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "valor_unit2")
+            input.setAttribute("class", "valor_unit2")
+            input.setAttribute("id", "valor_unit2")
+            input.setAttribute("type", "text")
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "desc_final")
+            input.setAttribute("class", "desc_final")
+            input.setAttribute("id", "desc_final")
+            input.setAttribute("type", "text")
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "valor_unit3")
+            input.setAttribute("class", "valor_unit3")
+            input.setAttribute("id", "valor_unit3")
+            input.setAttribute("type", "text")
+
+            var td = document.createElement('td')
+            tr.appendChild(td)
+            var input = document.createElement('input')
+            td.appendChild(input)
+            input.setAttribute("name", "total")
+            input.setAttribute("class", "total")
+            input.setAttribute("id", "total")
+            input.setAttribute("type", "text")
+
+            document.getElementById('itens').appendChild(tr)
+
+            var tabela = document.querySelector('#tabela');
+
+        })
+
+        const result = await fetch('/pedido/produtos/' + document.getElementById('item').value)
+        var response = await result.json()
+        console.log("oq é isso",response.descricao)
+        
+      var testando1 =  document.querySelector(".produto").value = response.descricao
+       var testandto2 = document.querySelector(".descricao").value = response.categoria
+
+       console.log("testes", testando1, testandto2)
+    }
+
+    
+
 
     function produtoVal(valor) {
 
         var lista = document.querySelectorAll('.listaP')
-
 
         var lResult = false;
 
@@ -349,6 +450,15 @@
         }
     }
 
+    tabela.addEventListener("click", ((event) => {
+        var elementoClicado = event.target;
+        if (elementoClicado.classList.contains("btn-danger")) {
+            var celula = elementoClicado.parentNode;
+            var linha = celula.parentNode;
+            linha.remove();
+        }
+    }))
+
     function valor1(valor) {
         var valor_unit = document.querySelector('.valor_unit')
         var desc1 = document.querySelector('.desc1')
@@ -362,8 +472,8 @@
         var calculo = Number(desc1.value) * Number(valor_unit.value) / 100
         var calc = calculo - Number(valor_unit.value)
         var final = Math.abs(calc)
-        
-        if(desc2){
+
+        if (desc2) {
             var calc3 = Number(valor_unit1.value) * Number(desc2.value) / 100
             var calc4 = calc3 - Number(valor_unit1.value)
             var final2 = Math.abs(calc4)
@@ -374,29 +484,29 @@
             var calc2 = final + final2
             console.log("OK", calc2)
         }
-        
-        if(desc_final){
+
+        if (desc_final) {
             var calc6 = Number(valor_unit2.value) * Number(desc_final.value) / 100
             var calc7 = calc6 - Number(valor_unit2.value)
             var final3 = Math.abs(calc7)
-            console.log("FINAL3",final3)
+            console.log("FINAL3", final3)
         }
 
-        if(valor_unit2){
+        if (valor_unit2) {
             var calc5 = final3 + calc2
-            console.log("FINAL4", calc5)            
+            console.log("FINAL4", calc5)
         }
 
 
-        if(valor_unit3){
+        if (valor_unit3) {
             var calc8 = calc5 + Number(valor_unit3.value)
-            console.log("FINAL5",calc8)
+            console.log("FINAL5", calc8)
         }
 
-        
-        
+
+
         document.querySelector('.total').value = calc8
-        
+
     }
 
 
@@ -405,23 +515,10 @@
     function adicionarCampo() {
         controleCampo++;
         document.getElementById('novalinha').insertAdjacentHTML('beforeend',
-            '<tr id="campo" ><td><input id="item" class="item"  type="text" value=""></td><td><input id="produto"class="produto" onchange="produtoVal(this.value)" style="text-align: right;" type="text" type="text" list="produtos"></td><td><input id="descricao" class="descricao" type="text" readonly></td><td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"></td><td><input id="valor_unit" class="valor_unit" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit}}"></td><td><input id="desc1" class="desc1" onchange="valor1(this.value)" style="text-align: right;" type="text" value="{{this.desc1}}"></td><td><input id="valor_unit1" class="valor_unit1" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit1}}"></td><td><input id="desc2" class="desc2" onchange="valor1(this.value)" style="text-align: right;" type="text" value="{{this.desc2}}"></td><td><input id="valor_unit2" class="valor_unit2" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit2}}"></td><td><input id="desc_final" class="desc_final" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.desc_final}}"></td><td><input id="valor_unit3" class="valor_unit3" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit3}}"></td><td><input id="total" class="total" style="text-align: right;" type="text" value="{{this.total}}"></td></td><td class="acoes"><span class="btn-danger">Excluir</span></td></tr>'
+            '<tr id="campo' + controleCampo + '" ><td><input id="item" class="item"  type="text" value="' + controleCampo + '"></td><td><input id="produto"class="produto" onchange="produtoVal(this.value)" style="text-align: right;" type="text" type="text" list="produtos"></td><td><input id="descricao" class="descricao" type="text" readonly></td><td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"></td><td><input id="valor_unit" class="valor_unit" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit}}"></td><td><input id="desc1" class="desc1" onchange="valor1(this.value)" style="text-align: right;" type="text" value="{{this.desc1}}"></td><td><input id="valor_unit1" class="valor_unit1" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit1}}"></td><td><input id="desc2" class="desc2" onchange="valor1(this.value)" style="text-align: right;" type="text" value="{{this.desc2}}"></td><td><input id="valor_unit2" class="valor_unit2" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit2}}"></td><td><input id="desc_final" class="desc_final" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.desc_final}}"></td><td><input id="valor_unit3" class="valor_unit3" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit3}}"></td><td><input id="total" class="total" style="text-align: right;" type="text" value="{{this.total}}"></td></td><td class="acoes"><span class="btn-danger">Excluir</span></td></tr>'
         )
     }
 
-
-
-
-    var tabela = document.querySelector('#tabela');
-
-    tabela.addEventListener("click", ((event) => {
-        var elementoClicado = event.target;
-        if (elementoClicado.classList.contains("btn-danger")) {
-            var celula = elementoClicado.parentNode;
-            var linha = celula.parentNode;
-            linha.remove();
-        }
-    }))
 
     //Fetch Pedido
     try {

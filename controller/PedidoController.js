@@ -98,6 +98,11 @@ module.exports = class AuthController {
         }
     }
 
+    static async produtos(req, res){
+        var produtos = await Produto.findOne({ raw: true, where: {cod_produto: req.params.cod_produto} })
+      res.json(produtos)
+    }
+
 
     static async lista(req, res) {
 
