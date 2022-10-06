@@ -23,8 +23,8 @@ module.exports = class AuthController {
 
         try {
 
-            if(!req.body.itens){
-                return res.status(400).json({message: "Item não encontrado"})
+            if (!req.body.itens) {
+                return res.status(400).json({ message: "Item não encontrado" })
             }
 
             var id_pedido
@@ -68,8 +68,8 @@ module.exports = class AuthController {
 
                     var searchProd = await Produto.findOne({ where: { cod_produto: item.produto } })
 
-                    if (!searchProd){
-                            return  
+                    if (!searchProd) {
+                        return
                     }
 
                     if (searchItem) {
@@ -81,16 +81,17 @@ module.exports = class AuthController {
                         })
 
                     } else {
-                            var idProduto = searchProd.id
-                            item.idProduto = idProduto
-                            item.idPedido = id_pedido
-                            await Item.create(item)       
+                        var idProduto = searchProd.id
+                        item.idProduto = idProduto
+                        item.idPedido = id_pedido
+                        await Item.create(item)
                     }
                 })
-               if(pedido && items) {return res.json({ message: "Registro realizado com sucesso", id_pedido: id_pedido })
-            }else{
-                return res.status(400).json({message: "Não foi possivel realizar o pedido"})
-            }
+                if (pedido && items) {
+                    return res.json({ message: "Registro realizado com sucesso", id_pedido: id_pedido })
+                } else {
+                    return res.status(400).json({ message: "Não foi possivel realizar o pedido" })
+                }
             }
 
         } catch (error) {
@@ -98,9 +99,14 @@ module.exports = class AuthController {
         }
     }
 
-    static async produtos(req, res){
-        var produtos = await Produto.findOne({ raw: true, where: {cod_produto: req.params.cod_produto} })
-      res.json(produtos)
+    static async produtos(req, res) {
+        var produtos = await Produto.findOne({ raw: true, where: { cod_produto: req.params.cod_produto } })
+
+        if(produtos){   
+            res.json(produtos)
+        }else{
+            res.status(400).json({message: "Não foi encontrado"})
+        }
     }
 
 

@@ -15,3 +15,154 @@
 .vermelho{
     color: red;
 }
+
+.item {
+    width: 100px;
+    height: 25px;
+    text-align: right;
+    
+}
+
+.produto{
+    width: 220px;
+    height: 25px;
+    text-align: right;
+}
+
+.descricao{
+    width: 100px;
+    height: 25px;
+    text-align: right;
+}
+
+.gbu{
+    width: 100px;
+    height: 25px;
+    text-align: right;
+}
+
+.valor_unit{
+    width: 100px;
+    height: 25px;
+    text-align: right;
+}
+
+.valor_unit1{
+    width: 100px;
+    height: 25px;
+    text-align: right;
+}
+
+.desc1{
+    width: 80px;
+    height: 25px;
+    text-align: right;
+}
+
+.desc1[type=number]::-webkit-inner-spin-button,
+.desc1[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.valor_unit2{
+    width: 80px;
+    height: 25px;
+    text-align: right;
+}
+
+.desc2{
+    width: 80px;
+    height: 25px;
+    text-align: right;
+}
+
+.desc2[type=number]::-webkit-inner-spin-button,
+.desc2[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.valor_unit3{
+    width: 100px;
+    height: 25px;
+    text-align: right;
+}
+
+.desc_final{
+    width: 80px;
+    height: 25px;
+    text-align: right;
+}
+
+.desc_final[type=number]::-webkit-inner-spin-button,
+.desc_final[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.total{
+    width: 100px;
+    height: 25px;
+    text-align: right;
+}
+
+.tabela{
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#erro-item{
+    text-align: right;
+}
+
+#erro-produto{
+    text-align: right;
+}
+
+#erro-descricao{
+    text-align: right;
+}
+
+#erro-gbu{
+    text-align: right;
+}
+
+#erro-valor_unit{
+    text-align: right;
+}
+
+#erro-desc1{
+    text-align: right;
+}
+
+#erro-valor_unit1{
+    text-align: right;
+}
+
+#erro-desc2{
+    text-align: right;
+}
+
+#erro-valor_unit2{
+    text-align: right;
+}
+
+#erro-descFinal{
+    text-align: right;
+}
+
+#erro-valor_unit3{
+    text-align: right;
+}
+
+#erro-total{
+    text-align: right;
+}
+
+#erro-acoes{
+    text-align: right;
+}
+
+.tabelaScroll{
+    max-height: 200px;
+    overflow-y: auto;
+}

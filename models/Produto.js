@@ -15,6 +15,16 @@ const Produto = db.define('Produto', {
     descricao : {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+
+    gbu : {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+    precos : {
+        type: DataTypes.STRING,
+        allowNull: false,
     }
 })
 
