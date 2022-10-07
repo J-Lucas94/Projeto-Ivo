@@ -3,7 +3,7 @@
     color: white;
     font-weight: bold;
     cursor: pointer;
-    padding: 8px;
+    padding: 3px;
     border-radius: 10px;
     margin: auto;
 }
@@ -163,6 +163,13 @@
 }
 
 .tabelaScroll{
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
+}
+
+.valorT{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+    margin-right: 40px;
 }

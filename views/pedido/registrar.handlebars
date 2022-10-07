@@ -2,6 +2,14 @@
     .input_clean {
         border-style: none;
     }
+  .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: rgb(7, 7, 7);
+   text-align: center;
+}
 </style>
 </head>
 
@@ -10,99 +18,66 @@
 </div>
 
 <div class="container-fluid ">
+    <hr>
     <div class="acoes">
     </div>
     <div class="">
         <div class="row">
-            <div class="col-6 mt-3" id="header">
-                <h1>Ivoclar</h1>
-                <h2>IVOCLAR VIVADENT LTDA</h2>
-                <p>Alamenda Caiapós, 723</p>
-                <p>Centro Empresarial Tamboré - CEP: 06460-110</p>
-                <p>Fone: (11)2424-7400</p>
-                <h3>Barueri - São Paulo</h3>
-            </div>
-
-            <div class="col-6 mt-3 " id="header2">
-
-                <div class="form-group">
-                    <label>ID Pedido</label>
-                    <input class="form-control" type="text" name="idPedido" id="idPedido" placeholder="ID Pedido"
-                        value="{{pedido.id}}" required>
-
-                </div>
-                <form>
-                    <div class="form-group">
-                        <label>Vendedor</label>
-                        <input class="form-control" type="text" name="vendedor" id="vendedor" placeholder="Vendedor..."
-                            value="{{pedido.vendedor}}" required>
-                        <small id="erro-vendedor" class="vermelho"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Cód. Cliente</label>
-                        <input class="form-control" type="text" name="cod_cliente" id="cod_cliente"
-                            placeholder="Código do cliente..." value="{{pedido.cod_cliente}}" required>
-                        <small id="erro-cod_cliente" class="vermelho"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Loja Número</label>
-                        <input class="form-control" type="text" name="loja_numero" id="loja_numero"
-                            placeholder="Número da Loja..." value="{{pedido.loja_numero}}" required>
-                        <small id="erro-loja_numero" class="vermelho"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Data</label>
-                        <input class="form-control" type="date" name="data" id="data" placeholder="Digite a Data..."
-                            value="{{pedido.data}}" required>
-                        <small id="erro-data" class="vermelho"></small>
-                    </div>
-                </form>
+            <div class="form-group col-2">
+                <label>ID Pedido</label>
+                <input class="form-control" type="text" name="idPedido" id="idPedido" placeholder="ID Pedido"
+                    value="{{pedido.id}}" required>
 
             </div>
-        </div>
-    </div>
-
-    <div id="header3">
-
-        <div>
-            <div class="row mt-2 border border-black border-start-0 rounded-end">
-                <div class="col-6">
-                    <h6>CNPJ: 04.004.675/0001-60</h6>
-                </div>
-                <div class="col-6">
-                    <h6>INSCR. ESTADUAL: 116314570.110</h6>
-                </div>
+            <div class="form-group col-2">
+                <label>Vendedor</label>
+                <input class="form-control" type="text" name="vendedor" id="vendedor" placeholder="Vendedor..."
+                    value="{{pedido.vendedor}}" required>
+                <small id="erro-vendedor" class="vermelho"></small>
             </div>
-        </div>
-    </div>
 
-    <form action="">
-        <div class="row">
-            <div class="form-group col-12 mt-2 ">
+            <div class="form-group col-2">
+                <label>Cód. Cliente</label>
+                <input class="form-control" type="text" name="cod_cliente" id="cod_cliente"
+                    placeholder="Código do cliente..." value="{{pedido.cod_cliente}}" required>
+                <small id="erro-cod_cliente" class="vermelho"></small>
+            </div>
+
+            <div class="form-group col-1">
+                <label>Loja</label>
+                <input class="form-control" type="text" name="loja_numero" id="loja_numero" placeholder="Loja..."
+                    value="{{pedido.loja_numero}}" required>
+                <small id="erro-loja_numero" class="vermelho"></small>
+            </div>
+
+            <div class="form-group col-1">
+                <label>Data</label>
+                <input class="form-control" type="date" name="data" id="data" placeholder="Digite a Data..."
+                    value="{{pedido.data}}" required>
+                <small id="erro-data" class="vermelho"></small>
+            </div>
+            <div class="form-group col-4 ">
                 <label>Nome/ Razão Social: </label>
                 <input class="form-control" type="text" name="razao_social" id="razao_social"
                     placeholder="Nome ou Razão Social..." value="{{pedido.razao_social}}" required>
                 <small id="erro-razao_social" class="vermelho"></small>
             </div>
 
-            <div class="form-group col-4">
+            <div class="form-group col-1">
                 <label>CEP</label>
                 <input class="form-control" type="text" name="cep" id="cep" placeholder="Digite o CEP sem o traço..."
                     value="{{pedido.cep}}" required>
                 <small id="erro-cep" class="vermelho"></small>
             </div>
 
-            <div class="form-group col-4">
+            <div class="form-group col-3">
                 <label>Endereço</label>
                 <input class="form-control" type="text" name="endereco" id="endereco"
                     placeholder="Digite o seu endereço..." value="{{pedido.endereco}}" required>
                 <small id="erro-endereco" class="vermelho"></small>
             </div>
 
-            <div class="form-group col-4">
+            <div class="form-group col-3">
                 <label>Bairro</label>
                 <input class="form-control" type="text" name="bairro" id="bairro" placeholder="Digite o seu bairro..."
                     value="{{pedido.bairro}}" required>
@@ -116,14 +91,14 @@
                 <small id="erro-municipio" class="vermelho"></small>
             </div>
 
-            <div class="form-group col-2">
+            <div class="form-group col-1">
                 <label>UF</label>
                 <input class="form-control" type="text" name="uf" id="uf" placeholder="Estado..." value="{{pedido.uf}}"
                     required>
                 <small id="erro-uf" class="vermelho"></small>
             </div>
 
-            <div class="form-group col-4">
+            <div class="form-group col-2">
                 <label>E-mail</label>
                 <input class="form-control" type="email" name="email" id="email" placeholder="Digite um E-mail..."
                     value="{{pedido.email}}" required>
@@ -144,28 +119,28 @@
                 <small id="erro-contato" class="vermelho"></small>
             </div>
 
-            <div class="form-group col-4">
+            <div class="form-group col-2">
                 <label>CNPJ/CPF</label>
                 <input class="form-control" type="text" name="cpf" id="cpf" placeholder="CPF OU CNPJ..."
                     value="{{pedido.cpf}}" required>
                 <small id="erro-cpf" class="vermelho"></small>
             </div>
 
-            <div class="form-group col-8">
+            <div class="form-group col-2">
                 <label>Inscrição Estadual</label>
                 <input class="form-control" type="text" name="inscricao" id="inscricao"
                     placeholder="Inscrição Estadual..." value="{{pedido.inscricao}}" required>
                 <small id="erro-inscricao" class="vermelho"></small>
             </div>
 
-            <div class="form-group col-4">
+            <div class="form-group col-2">
                 <label>Condição do Pagamento</label>
                 <input class="form-control" type="text" name="cond_pagamento" id="cond_pagamento"
                     placeholder="Condição do Pagamento..." value="{{pedido.cond_pagamento}}" required>
                 <small id="erro-cond_pagamento" class="vermelho"></small>
             </div>
 
-            <div class="form-group col-8">
+            <div class="form-group col-2">
                 <label>Transportadora</label>
                 <input class="form-control" type="text" name="transportadora" id="transportadora"
                     placeholder="Transportadora..." value="{{pedido.transportadora}}" required>
@@ -173,120 +148,118 @@
             </div>
         </div>
 
-    </form>
 
-    <div class="row">
+        <div class="row">
 
-        <div class="table1 col-12 mt-4">
-            <div class="tabelaScroll">
-                <table id="tabela" class="tabela">
-                    <thead>
-                        <tr>
+            <div class="table1 col-12 mt-4">
+                <div class="tabelaScroll">
+                    <table id="tabela" class="tabela table table-sm">
+                        <thead>
+                            <tr>
+                                <th id="erro-item">Item</th>
+                                <th id="erro-produto">Produto</th>
+                                <th id="erro-descricao">Descrição</th>
+                                <th id="erro-gbu">GBU</th>
+                                <th id="erro-valor_unit">ValorUnit</th>
+                                <th id="erro-desc1">Desc1 </th>
+                                <th id="erro-valor_unit1">ValorUnit1</th>
+                                <th id="erro-desc2">Desc2 </th>
+                                <th id="erro-valor_unit2">ValorUnit2</th>
+                                <th id="erro-descFinal">DescFinal </th>
+                                <th id="erro-valor_unit3">ValorUnit3</th>
+                                <th id="erro-total">Total </th>
+                                <th id="erro-acoes">Ações </th>
+                            </tr>
+                        </thead>
 
-                            <th id="erro-item">Item</th>
-                            <th id="erro-produto">Produto</th>
-                            <th id="erro-descricao">Descrição</th>
-                            <th id="erro-gbu">GBU</th>
-                            <th id="erro-valor_unit">ValorUnit</th>
-                            <th id="erro-desc1">Desc1 </th>
-                            <th id="erro-valor_unit1">ValorUnit1</th>
-                            <th id="erro-desc2">Desc2 </th>
-                            <th id="erro-valor_unit2">ValorUnit2</th>
-                            <th id="erro-descFinal">DescFinal </th>
-                            <th id="erro-valor_unit3">ValorUnit3</th>
-                            <th id="erro-total">Total </th>
-                            <th id="erro-acoes">Ações </th>
+                        <tbody id="itens">
 
-                        </tr>
-                    </thead>
+                            {{#if itens}}
 
-                    <tbody id="itens">
+                            {{#each itens}}
+                            <tr>
 
-                        {{#if itens}}
+                                <div>
+                                    <td><input id="item" class="item" type="text" value="{{this.item}}" required></td>
+                                </div>
+                                <td><input id="produto" class="produto" type="text" list="produtos" type="text"
+                                        value="{{this.produto}}" readonly required></td>
 
-                        {{#each itens}}
-                        <tr>
+                                <td><input id="descricao" class="descricao" type="text" value="" readonly>
+                                </td>
+                                <td><input id="gbu" class="gbu" type="text" value="{{this.gbu}}" readonly required>
+                                </td>
+                                <td><input id="valor_unit" class="valor_unit" onchange="valor1()" type="text"
+                                        value="{{this.valor_unit}}" readonly required></td>
 
-                            <div>
-                                <td><input id="item" class="item" type="text" value="{{this.item}}" required></td>
-                            </div>
-                            <td><input id="produto" class="produto" type="text" list="produtos" type="text"
-                                    value="{{this.produto}}" readonly required></td>
+                                <td><input id="desc1" class="desc1" onchange="valor1()" type="number" min="0" max="99"
+                                        step=".01" value="{{this.desc1}}">
+                                </td>
+                                <td><input id="valor_unit1" class="valor_unit1" onchange="valor1()" type="text"
+                                        value="{{this.valor_unit1}}" readonly required></td>
 
-                            <td><input id="descricao" class="descricao" type="text" value="" readonly>
-                            </td>
-                            <td><input id="gbu" class="gbu" type="text" value="{{this.gbu}}" readonly required>
-                            </td>
-                            <td><input id="valor_unit" class="valor_unit" onchange="valor1(this.value)" type="text"
-                                    value="{{this.valor_unit}}" readonly required></td>
+                                <td><input id="desc2" class="desc2" onchange="valor1()" type="number" min="0" max="99"
+                                        step=".01" value="{{this.desc2}}">
+                                </td>
+                                <td><input id="valor_unit2" class="valor_unit2" onchange="valor1()" type="text"
+                                        value="{{this.valor_unit2}}" readonly required></td>
 
-                            <td><input id="desc1" class="desc1" onchange="valor1(this.value)" type="number" min="0"
-                                    max="99" step=".01" value="{{this.desc1}}">
-                            </td>
-                            <td><input id="valor_unit1" class="valor_unit1" onchange="valor1(this.value)" type="text"
-                                    value="{{this.valor_unit1}}" readonly required></td>
+                                <td><input id="desc_final" class="desc_final" onchange="valor1()" min="0" max="99"
+                                        step=".01" type="number" value="{{this.desc_final}}">
 
-                            <td><input id="desc2" class="desc2" onchange="valor1(this.value)" type="number" min="0"
-                                    max="99" step=".01" value="{{this.desc2}}">
-                            </td>
-                            <td><input id="valor_unit2" class="valor_unit2" onchange="valor1(this.value)" type="text"
-                                    value="{{this.valor_unit2}}" readonly required></td>
+                                </td>
+                                <td><input id="valor_unit3" class="valor_unit3" onchange="valor1()"
+                                        style="text-align: right; width:100px;" type="text" value="{{this.valor_unit3}}"
+                                        readonly required></td>
 
-                            <td><input id="desc_final" class="desc_final" onchange="valor1(this.value)" min="0" max="99"
-                                    step=".01" type="number" value="{{this.desc_final}}">
+                                <td><input id="total" class="total" type="text" value="{{this.total}}" readonly
+                                        required>
 
-                            </td>
-                            <td><input id="valor_unit3" class="valor_unit3" onchange="valor1(this.value)"
-                                    style="text-align: right; width:100px;" type="text" value="{{this.valor_unit3}}"
-                                    readonly required></td>
+                                </td>
+                                <td class="acoes">
+                                    <span class="btn-danger">
+                                        Excluir
+                                    </span>
+                                </td>
 
-                            <td><input id="total" class="total" type="text" value="{{this.total}}" readonly required>
+                            </tr>
 
-                            </td>
-                            <td class="acoes">
-                                <span class="btn-danger">
-                                    Excluir
-                                </span>
-                            </td>
+                            {{/each}}
 
-                        </tr>
+                            {{else}}
 
-                        {{/each}}
-
-                        {{else}}
-
-                        <tr>
+                            <tr>
 
 
-                        </tr>
+                            </tr>
 
-                        {{/if}}
+                            {{/if}}
 
-                    </tbody>
+                        </tbody>
 
 
 
-                    <button class="btn btn-primary col-1 m-center" onclick="javascript:preencher(event)"
-                        type="button">+</button>
+                        <button class="btn btn-primary col-1 m-center" onclick="javascript:preencher(event)"
+                            type="button">+</button>
 
-                </table>
+                    </table>
+                </div>
+
             </div>
 
         </div>
-        <p>180:00</p>
-        <button id="form1" type="button" class="btn btn-success col-2 m-auto">Registrar</button>
+
     </div>
-
+    <datalist id="produtos">
+        {{#each produto}}
+        <option class="listaP" value="{{this.cod_produto}}">{{this.categoria}} - {{this.descricao}}</option>
+        {{/each}}
+    </datalist>
+    <div class="footer">
+        <h6 class="valorT"></h6>
+        <button id="form1" type="button" class="btn btn-success m-auto">Registrar</button>
+    </div>
 </div>
-
-
-<datalist id="produtos">
-    {{#each produto}}
-    <option class="listaP" value="{{this.cod_produto}}">{{this.categoria}} - {{this.descricao}}</option>
-    {{/each}}
-</datalist>
-
-
 <script>
 
     async function preencher(event) {
@@ -375,7 +348,7 @@
                     input.setAttribute("class", "valor_unit")
                     input.setAttribute("id", "valor_unit")
                     input.setAttribute("type", "text")
-                    input.setAttribute("onchange", "valor1(this.value)")
+                    input.setAttribute("onchange", "valor1()")
                     input.setAttribute("readonly", "readonly")
                     input.setAttribute("style", "text-align: right;")
 
@@ -388,8 +361,8 @@
                     input.setAttribute("class", "desc1")
                     input.setAttribute("id", "desc1")
                     input.setAttribute("type", "number")
-                    input.setAttribute("value", "0,00")
-                    input.setAttribute("onchange", "valor1(this.value)")
+                    input.setAttribute("value", 0.00)
+                    input.setAttribute("onchange", "valor1()")
                     input.setAttribute("min", "0")
                     input.setAttribute("max", "10000")
                     input.setAttribute("step", ".01")
@@ -405,7 +378,7 @@
                     input.setAttribute("class", "valor_unit1")
                     input.setAttribute("id", "valor_unit1")
                     input.setAttribute("type", "text")
-                    input.setAttribute("onchange", "valor1(this.value)")
+                    input.setAttribute("onchange", "valor1()")
                     input.setAttribute("readonly", "readonly")
                     input.setAttribute("style", "text-align: right;")
 
@@ -418,8 +391,8 @@
                     input.setAttribute("class", "desc2")
                     input.setAttribute("id", "desc2")
                     input.setAttribute("type", "number")
-                    input.setAttribute("value", "0,00")
-                    input.setAttribute("onchange", "valor1(this.value)")
+                    input.setAttribute("value", 0.00)
+                    input.setAttribute("onchange", "valor1()")
                     input.setAttribute("min", "0")
                     input.setAttribute("max", "10000")
                     input.setAttribute("oninput", "validity.valid||(value='')")
@@ -434,8 +407,8 @@
                     input.setAttribute("class", "valor_unit2")
                     input.setAttribute("id", "valor_unit2")
                     input.setAttribute("type", "text")
-                    input.setAttribute("onchange", "valor1(this.value)")
-                    input.setAttribute("onchange", "valor1(this.value)")
+                    input.setAttribute("onchange", "valor1()")
+                    input.setAttribute("onchange", "valor1()")
                     input.setAttribute("readonly", "readonly")
                     input.setAttribute("style", "text-align: right;")
 
@@ -448,8 +421,8 @@
                     input.setAttribute("class", "desc_final")
                     input.setAttribute("id", "desc_final")
                     input.setAttribute("type", "number")
-                    input.setAttribute("value", "0,00")
-                    input.setAttribute("onchange", "valor1(this.value)")
+                    input.setAttribute("value", 0.00)
+                    input.setAttribute("onchange", "valor1()")
                     input.setAttribute("min", "0")
                     input.setAttribute("max", "10000")
                     input.setAttribute("oninput", "validity.valid||(value='')")
@@ -464,7 +437,7 @@
                     input.setAttribute("class", "valor_unit3")
                     input.setAttribute("id", "valor_unit3")
                     input.setAttribute("type", "text")
-                    input.setAttribute("onchange", "valor1(this.value)")
+                    input.setAttribute("onchange", "valor1()")
                     input.setAttribute("readonly", "readonly")
                     input.setAttribute("style", "text-align: right;")
 
@@ -483,6 +456,7 @@
                     tr.appendChild(td)
                     var span = document.createElement('span')
                     td.appendChild(span)
+                    span.innerHTML = "Excluir"
 
                     span.setAttribute("class", "btn-danger")
 
@@ -503,7 +477,7 @@
                     var valor_unit3 = item.querySelector(".total").value = response.precos
 
                 }
-
+                valor1()
             } catch {
                 swal("Error", "", "error")
             }
@@ -547,10 +521,10 @@
         }
     }))
 
-    function valor1(valor) {
+    function valor1() {
 
         var trItens = document.querySelectorAll(".tr-item")
-
+        var totalGeral = 0
         trItens.forEach((trItem) => {
 
             var valor_unit = trItem.querySelector('.valor_unit')
@@ -567,16 +541,13 @@
             var calculo = parseFloat(desc1.value) * parseFloat(ValorUnitP) / 100
             var calc = calculo - parseFloat(ValorUnitP)
             var calcP = calc * -1
-            console.log("calculo1", calcP)
 
             if (calc) {
                 trItem.querySelector('.valor_unit1').value = calcP.toFixed(2)
             }
 
-
             var calc3 = calc * parseFloat(desc2.value) / 100
             var calc4 = calc3 - calc
-            console.log("calculo2", calc4)
 
             if (calc4) {
                 trItem.querySelector('.valor_unit2').value = calc4.toFixed(2)
@@ -585,7 +556,6 @@
             var calc6 = calc4 * parseFloat(desc_final.value) / 100
             var calc7 = calc6 - parseFloat(calc4)
             var calc7P = calc7 * -1
-            console.log("calculo3", calc7P)
 
             if (calc4) {
                 trItem.querySelector('.valor_unit3').value = calc4.toFixed(2)
@@ -607,15 +577,22 @@
             if (calc7P) {
                 trItem.querySelector('.total').value = calc7P.toFixed(2)
             }
-        });
 
+            var totalV = trItem.querySelector('.total').value
+
+            console.log(totalV)
+            totalGeral = totalGeral + calc7P
+
+
+        });
+        document.querySelector('.valorT').innerHTML = totalGeral
     }
 
 
     function adicionarCampo() {
 
         document.getElementById('novalinha').insertAdjacentHTML('beforeend',
-            '<tr id="campo' + controleCampo + '" ><td><input id="item" class="item"  type="text" value="' + controleCampo + '"></td><td><input id="produto"class="produto" onchange="produtoVal(this.value)" style="text-align: right;" type="text" type="text" list="produtos"></td><td><input id="descricao" class="descricao" type="text" readonly></td><td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"></td><td><input id="valor_unit" class="valor_unit" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit}}"></td><td><input id="desc1" class="desc1" onchange="valor1(this.value)" style="text-align: right;" type="text" value="{{this.desc1}}"></td><td><input id="valor_unit1" class="valor_unit1" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit1}}"></td><td><input id="desc2" class="desc2" onchange="valor1(this.value)" style="text-align: right;" type="text" value="{{this.desc2}}"></td><td><input id="valor_unit2" class="valor_unit2" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit2}}"></td><td><input id="desc_final" class="desc_final" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.desc_final}}"></td><td><input id="valor_unit3" class="valor_unit3" onchange="valor1(this.value)" style="text-align: right;" type="text"value="{{this.valor_unit3}}"></td><td><input id="total" class="total" style="text-align: right;" type="text" value="{{this.total}}"></td></td><td class="acoes"><span class="btn-danger">Excluir</span></td></tr>'
+            '<tr id="campo' + controleCampo + '" ><td><input id="item" class="item"  type="text" value="' + controleCampo + '"></td><td><input id="produto"class="produto" onchange="produtoVal(this.value)" style="text-align: right;" type="text" type="text" list="produtos"></td><td><input id="descricao" class="descricao" type="text" readonly></td><td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"></td><td><input id="valor_unit" class="valor_unit" onchange="valor1()" style="text-align: right;" type="text"value="{{this.valor_unit}}"></td><td><input id="desc1" class="desc1" onchange="valor1()" style="text-align: right;" type="text" value="{{this.desc1}}"></td><td><input id="valor_unit1" class="valor_unit1" onchange="valor1()" style="text-align: right;" type="text"value="{{this.valor_unit1}}"></td><td><input id="desc2" class="desc2" onchange="valor1()" style="text-align: right;" type="text" value="{{this.desc2}}"></td><td><input id="valor_unit2" class="valor_unit2" onchange="valor1()" style="text-align: right;" type="text"value="{{this.valor_unit2}}"></td><td><input id="desc_final" class="desc_final" onchange="valor1()" style="text-align: right;" type="text"value="{{this.desc_final}}"></td><td><input id="valor_unit3" class="valor_unit3" onchange="valor1()" style="text-align: right;" type="text"value="{{this.valor_unit3}}"></td><td><input id="total" class="total" style="text-align: right;" type="text" value="{{this.total}}"></td></td><td class="acoes"><span class="btn-danger">Excluir</span></td></tr>'
         )
     }
 
@@ -986,6 +963,9 @@
         .addEventListener('focusout', pesquisarCep);
 
     window.addEventListener('load', function () {
+        document.querySelectorAll('input').forEach((input) => {
+            input.addEventListener('onchange', valor1(event))
+        })
+    });
 
-    });    
 </script>
