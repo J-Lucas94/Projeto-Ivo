@@ -1,4 +1,73 @@
-.btn-danger {
+.folder {
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .header {
+        display: none;
+    }
+
+    .tabelaScroll {
+        display: none;
+    }
+
+    .folder {
+        display: grid;
+    }
+
+
+    .abas {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .aba {
+        display: inline;
+    }
+
+    .aba>a {
+        float: left;
+        padding: 0.5em 1em;
+        background: linear-gradient(#FFF, #EEE);
+        border-width: 1px;
+        border-style: solid;
+        border-color: #CCC #CCC #FFF;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+        text-decoration: none;
+    }
+
+    .aba:not(:target) a {
+        border-bottom: 0 none;
+    }
+
+    .aba:target a,
+    a:hover {
+        background: white;
+    }
+
+}
+
+.input_clean {
+    border-style: none;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: rgb(7, 7, 7);
+    text-align: center;
+    background-color: white;
+    height: 8%;
+}
+
+
+.excluirC {
     background-color: rgb(245, 65, 65);
     color: white;
     font-weight: bold;
@@ -7,12 +76,13 @@
     border-radius: 10px;
     margin: auto;
 }
-.btn-danger:hover{
+
+.excluirC:hover {
     background-color: rgb(245, 30, 30);
 }
 
 
-.vermelho{
+.vermelho {
     color: red;
 }
 
@@ -20,40 +90,51 @@
     width: 100px;
     height: 25px;
     text-align: right;
-    
+
 }
 
-.produto{
+.produto {
     width: 220px;
     height: 25px;
     text-align: right;
 }
 
-.descricao{
+.descricao {
     width: 100px;
     height: 25px;
     text-align: right;
 }
 
-.gbu{
+.quantidade {
+    width: 80px;
+    height: 25px;
+    text-align: right;
+}
+
+.quantidade[type=number]::-webkit-inner-spin-button,
+.quantidade[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.gbu {
     width: 100px;
     height: 25px;
     text-align: right;
 }
 
-.valor_unit{
+.valor_unit {
     width: 100px;
     height: 25px;
     text-align: right;
 }
 
-.valor_unit1{
+.valor_unit1 {
     width: 100px;
     height: 25px;
     text-align: right;
 }
 
-.desc1{
+.desc1 {
     width: 80px;
     height: 25px;
     text-align: right;
@@ -64,13 +145,13 @@
     -webkit-appearance: none;
 }
 
-.valor_unit2{
+.valor_unit2 {
     width: 80px;
     height: 25px;
     text-align: right;
 }
 
-.desc2{
+.desc2 {
     width: 80px;
     height: 25px;
     text-align: right;
@@ -81,13 +162,13 @@
     -webkit-appearance: none;
 }
 
-.valor_unit3{
+.valor_unit3 {
     width: 100px;
     height: 25px;
     text-align: right;
 }
 
-.desc_final{
+.desc_final {
     width: 80px;
     height: 25px;
     text-align: right;
@@ -98,78 +179,81 @@
     -webkit-appearance: none;
 }
 
-.total{
+.total {
     width: 100px;
     height: 25px;
     text-align: right;
 }
 
-.tabela{
+.tabela {
     margin: auto;
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
-#erro-item{
-    text-align: right;
+#erro-item {
+    text-align: center;
 }
 
-#erro-produto{
-    text-align: right;
+#erro-produto {
+    text-align: center;
 }
 
-#erro-descricao{
-    text-align: right;
+#erro-descricao {
+    text-align: center;
 }
 
-#erro-gbu{
-    text-align: right;
+#erro-quantidade {
+    text-align: center;
 }
 
-#erro-valor_unit{
-    text-align: right;
+#erro-gbu {
+    text-align: center;
 }
 
-#erro-desc1{
-    text-align: right;
+#erro-valor_unit {
+    text-align: center;
 }
 
-#erro-valor_unit1{
-    text-align: right;
+#erro-desc1 {
+    text-align: center;
 }
 
-#erro-desc2{
-    text-align: right;
+#erro-valor_unit1 {
+    text-align: center;
 }
 
-#erro-valor_unit2{
-    text-align: right;
+#erro-desc2 {
+    text-align: center;
 }
 
-#erro-descFinal{
-    text-align: right;
+#erro-valor_unit2 {
+    text-align: center;
 }
 
-#erro-valor_unit3{
-    text-align: right;
+#erro-descFinal {
+    text-align: center;
 }
 
-#erro-total{
-    text-align: right;
+#erro-valor_unit3 {
+    text-align: center;
 }
 
-#erro-acoes{
-    text-align: right;
+#erro-total {
+    text-align: center;
 }
 
-.tabelaScroll{
+#erro-acoes {
+    text-align: center;
+}
+
+.tabelaScroll {
     max-height: 300px;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
-.valorT{
+.valorT {
     display: flex;
     justify-content: flex-end;
-    margin-top: 25px;
     margin-right: 40px;
 }

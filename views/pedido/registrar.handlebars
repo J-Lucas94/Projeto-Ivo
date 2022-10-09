@@ -1,264 +1,282 @@
-<style>
-    .input_clean {
-        border-style: none;
-    }
-  .footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   color: rgb(7, 7, 7);
-   text-align: center;
-}
-</style>
-</head>
+<hr>
+<div class="folder">
+    <ul class="abas">
+        <li class="aba" id="aba-1">
+            <a class="nav-link link-dark" onclick="mostrar()">Pedido</a>
 
-<div class="alert alert-success" role="alert" hidden>
-    Registro realizado com sucesso !
+        <li class="aba" id="aba-2">
+            <a class="nav-link link-dark" onclick="mostrar1()">Itens</a>
+
+            <li class="aba" id="aba-3">
+            <a class="nav-link link-dark" onclick="esconder()">Fechar</a>
+
+    </ul>
 </div>
 
-<div class="container-fluid ">
-    <hr>
-    <div class="acoes">
-    </div>
-    <div class="">
-        <div class="row">
-            <div class="form-group col-2">
-                <label>ID Pedido</label>
-                <input class="form-control" type="text" name="idPedido" id="idPedido" placeholder="ID Pedido"
-                    value="{{pedido.id}}" required>
+<script>
+    function mostrar() {
+        const mudar = document.querySelector(".header")
+        mudar.style.display = "block"
+    }
 
-            </div>
-            <div class="form-group col-2">
-                <label>Vendedor</label>
-                <input class="form-control" type="text" name="vendedor" id="vendedor" placeholder="Vendedor..."
-                    value="{{pedido.vendedor}}" required>
-                <small id="erro-vendedor" class="vermelho"></small>
-            </div>
+    function mostrar1() {
+        const mudar1 = document.querySelector('.tabelaScroll')
+        mudar1.style.display = "block"
+    }
 
-            <div class="form-group col-2">
-                <label>Cód. Cliente</label>
-                <input class="form-control" type="text" name="cod_cliente" id="cod_cliente"
-                    placeholder="Código do cliente..." value="{{pedido.cod_cliente}}" required>
-                <small id="erro-cod_cliente" class="vermelho"></small>
-            </div>
+    function esconder(){
+        const mudar = document.querySelector(".header")
+         mudar.style.display = "none"
+         const mudar1 = document.querySelector('.tabelaScroll')
+         mudar1.style.display = "none"
+    }
 
-            <div class="form-group col-1">
-                <label>Loja</label>
-                <input class="form-control" type="text" name="loja_numero" id="loja_numero" placeholder="Loja..."
-                    value="{{pedido.loja_numero}}" required>
-                <small id="erro-loja_numero" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-1">
-                <label>Data</label>
-                <input class="form-control" type="date" name="data" id="data" placeholder="Digite a Data..."
-                    value="{{pedido.data}}" required>
-                <small id="erro-data" class="vermelho"></small>
-            </div>
-            <div class="form-group col-4 ">
-                <label>Nome/ Razão Social: </label>
-                <input class="form-control" type="text" name="razao_social" id="razao_social"
-                    placeholder="Nome ou Razão Social..." value="{{pedido.razao_social}}" required>
-                <small id="erro-razao_social" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-1">
-                <label>CEP</label>
-                <input class="form-control" type="text" name="cep" id="cep" placeholder="Digite o CEP sem o traço..."
-                    value="{{pedido.cep}}" required>
-                <small id="erro-cep" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-3">
-                <label>Endereço</label>
-                <input class="form-control" type="text" name="endereco" id="endereco"
-                    placeholder="Digite o seu endereço..." value="{{pedido.endereco}}" required>
-                <small id="erro-endereco" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-3">
-                <label>Bairro</label>
-                <input class="form-control" type="text" name="bairro" id="bairro" placeholder="Digite o seu bairro..."
-                    value="{{pedido.bairro}}" required>
-                <small id="erro-bairro" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-2">
-                <label>Municipio</label>
-                <input class="form-control" type="text" name="municipio" id="municipio"
-                    placeholder="Digite o seu municipio..." value="{{pedido.municipio}}" required>
-                <small id="erro-municipio" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-1">
-                <label>UF</label>
-                <input class="form-control" type="text" name="uf" id="uf" placeholder="Estado..." value="{{pedido.uf}}"
-                    required>
-                <small id="erro-uf" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-2">
-                <label>E-mail</label>
-                <input class="form-control" type="email" name="email" id="email" placeholder="Digite um E-mail..."
-                    value="{{pedido.email}}" required>
-                <small id="erro-email" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-2">
-                <label>Fone/Fax</label>
-                <input class="form-control" type="tel" name="fone" id="fone" placeholder="Telefone ou Fax..."
-                    value="{{pedido.fone}}" required>
-                <small id="erro-fone" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-2">
-                <label>Contato</label>
-                <input class="form-control" type="text" name="contato" id="contato" placeholder="Contato..."
-                    value="{{pedido.contato}}" required>
-                <small id="erro-contato" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-2">
-                <label>CNPJ/CPF</label>
-                <input class="form-control" type="text" name="cpf" id="cpf" placeholder="CPF OU CNPJ..."
-                    value="{{pedido.cpf}}" required>
-                <small id="erro-cpf" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-2">
-                <label>Inscrição Estadual</label>
-                <input class="form-control" type="text" name="inscricao" id="inscricao"
-                    placeholder="Inscrição Estadual..." value="{{pedido.inscricao}}" required>
-                <small id="erro-inscricao" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-2">
-                <label>Condição do Pagamento</label>
-                <input class="form-control" type="text" name="cond_pagamento" id="cond_pagamento"
-                    placeholder="Condição do Pagamento..." value="{{pedido.cond_pagamento}}" required>
-                <small id="erro-cond_pagamento" class="vermelho"></small>
-            </div>
-
-            <div class="form-group col-2">
-                <label>Transportadora</label>
-                <input class="form-control" type="text" name="transportadora" id="transportadora"
-                    placeholder="Transportadora..." value="{{pedido.transportadora}}" required>
-                <small id="erro-transportadora" class="vermelho"></small>
-            </div>
-        </div>
+</script>
 
 
-        <div class="row">
+<div class="container-fluid">
+    <form>
+        <div class="header">
+            <div class="row">
+                <div class="form-group col-sm-2">
+                    <label>ID Pedido</label>
+                    <input class="form-control" type="text" name="idPedido" id="idPedido" placeholder="ID Pedido"
+                        value="{{pedido.id}}" required>
+                </div>
 
-            <div class="table1 col-12 mt-4">
-                <div class="tabelaScroll">
-                    <table id="tabela" class="tabela table table-sm">
-                        <thead>
-                            <tr>
-                                <th id="erro-item">Item</th>
-                                <th id="erro-produto">Produto</th>
-                                <th id="erro-descricao">Descrição</th>
-                                <th id="erro-gbu">GBU</th>
-                                <th id="erro-valor_unit">ValorUnit</th>
-                                <th id="erro-desc1">Desc1 </th>
-                                <th id="erro-valor_unit1">ValorUnit1</th>
-                                <th id="erro-desc2">Desc2 </th>
-                                <th id="erro-valor_unit2">ValorUnit2</th>
-                                <th id="erro-descFinal">DescFinal </th>
-                                <th id="erro-valor_unit3">ValorUnit3</th>
-                                <th id="erro-total">Total </th>
-                                <th id="erro-acoes">Ações </th>
-                            </tr>
-                        </thead>
+                <div class="form-group col-sm-2">
+                    <label>Vendedor</label>
+                    <input class="form-control" type="text" name="vendedor" id="vendedor" placeholder="Vendedor..."
+                        value="{{pedido.vendedor}}" required>
+                    <small id="erro-vendedor" class="vermelho"></small>
+                </div>
 
-                        <tbody id="itens">
+                <div class="form-group col-sm-2">
+                    <label>Cód. Cliente</label>
+                    <input class="form-control" type="text" name="cod_cliente" id="cod_cliente"
+                        placeholder="Código do cliente..." value="{{pedido.cod_cliente}}" required>
+                    <small id="erro-cod_cliente" class="vermelho"></small>
+                </div>
 
-                            {{#if itens}}
+                <div class="form-group col-sm-1">
+                    <label>Loja</label>
+                    <input class="form-control" type="text" name="loja_numero" id="loja_numero" placeholder="Loja..."
+                        value="{{pedido.loja_numero}}" required>
+                    <small id="erro-loja_numero" class="vermelho"></small>
+                </div>
 
-                            {{#each itens}}
-                            <tr>
+                <div class="form-group col-sm-2">
+                    <label>Data</label>
+                    <input class="form-control" type="date" name="data" id="data" placeholder="Digite a Data..."
+                        value="{{pedido.data}}" required>
+                    <small id="erro-data" class="vermelho"></small>
+                </div>
 
-                                <div>
-                                    <td><input id="item" class="item" type="text" value="{{this.item}}" required></td>
-                                </div>
-                                <td><input id="produto" class="produto" type="text" list="produtos" type="text"
-                                        value="{{this.produto}}" readonly required></td>
+                <div class="form-group col-sm-3">
+                    <label>Nome/ Razão Social: </label>
+                    <input class="form-control" type="text" name="razao_social" id="razao_social"
+                        placeholder="Nome ou Razão Social..." value="{{pedido.razao_social}}" required>
+                    <small id="erro-razao_social" class="vermelho"></small>
+                </div>
 
-                                <td><input id="descricao" class="descricao" type="text" value="" readonly>
-                                </td>
-                                <td><input id="gbu" class="gbu" type="text" value="{{this.gbu}}" readonly required>
-                                </td>
-                                <td><input id="valor_unit" class="valor_unit" onchange="valor1()" type="text"
-                                        value="{{this.valor_unit}}" readonly required></td>
+                <div class="form-group col-sm-1">
+                    <label>CEP</label>
+                    <input class="form-control" type="text" name="cep" id="cep"
+                        placeholder="Digite o CEP sem o traço..." value="{{pedido.cep}}" required>
+                    <small id="erro-cep" class="vermelho"></small>
+                </div>
 
-                                <td><input id="desc1" class="desc1" onchange="valor1()" type="number" min="0" max="99"
-                                        step=".01" value="{{this.desc1}}">
-                                </td>
-                                <td><input id="valor_unit1" class="valor_unit1" onchange="valor1()" type="text"
-                                        value="{{this.valor_unit1}}" readonly required></td>
+                <div class="form-group col-sm-3">
+                    <label>Endereço</label>
+                    <input class="form-control" type="text" name="endereco" id="endereco"
+                        placeholder="Digite o seu endereço..." value="{{pedido.endereco}}" required>
+                    <small id="erro-endereco" class="vermelho"></small>
+                </div>
 
-                                <td><input id="desc2" class="desc2" onchange="valor1()" type="number" min="0" max="99"
-                                        step=".01" value="{{this.desc2}}">
-                                </td>
-                                <td><input id="valor_unit2" class="valor_unit2" onchange="valor1()" type="text"
-                                        value="{{this.valor_unit2}}" readonly required></td>
+                <div class="form-group col-sm-3">
+                    <label>Bairro</label>
+                    <input class="form-control" type="text" name="bairro" id="bairro"
+                        placeholder="Digite o seu bairro..." value="{{pedido.bairro}}" required>
+                    <small id="erro-bairro" class="vermelho"></small>
+                </div>
 
-                                <td><input id="desc_final" class="desc_final" onchange="valor1()" min="0" max="99"
-                                        step=".01" type="number" value="{{this.desc_final}}">
+                <div class="form-group col-sm-2">
+                    <label>Municipio</label>
+                    <input class="form-control" type="text" name="municipio" id="municipio"
+                        placeholder="Digite o seu municipio..." value="{{pedido.municipio}}" required>
+                    <small id="erro-municipio" class="vermelho"></small>
+                </div>
 
-                                </td>
-                                <td><input id="valor_unit3" class="valor_unit3" onchange="valor1()"
-                                        style="text-align: right; width:100px;" type="text" value="{{this.valor_unit3}}"
-                                        readonly required></td>
+                <div class="form-group col-sm-1">
+                    <label>UF</label>
+                    <input class="form-control" type="text" name="uf" id="uf" placeholder="Estado..."
+                        value="{{pedido.uf}}" required>
+                    <small id="erro-uf" class="vermelho"></small>
+                </div>
 
-                                <td><input id="total" class="total" type="text" value="{{this.total}}" readonly
-                                        required>
+                <div class="form-group col-sm-2">
+                    <label>E-mail</label>
+                    <input class="form-control" type="email" name="email" id="email" placeholder="Digite um E-mail..."
+                        value="{{pedido.email}}" required>
+                    <small id="erro-email" class="vermelho"></small>
+                </div>
 
-                                </td>
-                                <td class="acoes">
-                                    <span class="btn-danger">
-                                        Excluir
-                                    </span>
-                                </td>
+                <div class="form-group col-sm-2">
+                    <label>Fone/Fax</label>
+                    <input class="form-control" type="tel" name="fone" id="fone" placeholder="Telefone ou Fax..."
+                        value="{{pedido.fone}}" required>
+                    <small id="erro-fone" class="vermelho"></small>
+                </div>
 
-                            </tr>
+                <div class="form-group col-sm-2">
+                    <label>Contato</label>
+                    <input class="form-control" type="text" name="contato" id="contato" placeholder="Contato..."
+                        value="{{pedido.contato}}" required>
+                    <small id="erro-contato" class="vermelho"></small>
+                </div>
 
-                            {{/each}}
+                <div class="form-group col-sm-2">
+                    <label>CNPJ/CPF</label>
+                    <input class="form-control" type="text" name="cpf" id="cpf" placeholder="CPF OU CNPJ..."
+                        value="{{pedido.cpf}}" required>
+                    <small id="erro-cpf" class="vermelho"></small>
+                </div>
 
-                            {{else}}
+                <div class="form-group col-sm-2">
+                    <label>Inscrição Estadual</label>
+                    <input class="form-control" type="text" name="inscricao" id="inscricao"
+                        placeholder="Inscrição Estadual..." value="{{pedido.inscricao}}" required>
+                    <small id="erro-inscricao" class="vermelho"></small>
+                </div>
 
-                            <tr>
+                <div class="form-group col-sm-2">
+                    <label>Condição do Pagamento</label>
+                    <input class="form-control" type="text" name="cond_pagamento" id="cond_pagamento"
+                        placeholder="Condição do Pagamento..." value="{{pedido.cond_pagamento}}" required>
+                    <small id="erro-cond_pagamento" class="vermelho"></small>
+                </div>
 
-
-                            </tr>
-
-                            {{/if}}
-
-                        </tbody>
-
-
-
-                        <button class="btn btn-primary col-1 m-center" onclick="javascript:preencher(event)"
-                            type="button">+</button>
-
-                    </table>
+                <div class="form-group col-sm-2 mb-5">
+                    <label>Transportadora</label>
+                    <input class="form-control" type="text" name="transportadora" id="transportadora"
+                        placeholder="Transportadora..." value="{{pedido.transportadora}}" required>
+                    <small id="erro-transportadora" class="vermelho"></small>
                 </div>
 
             </div>
-
         </div>
+    </form>
+</div>
 
+
+<div class="table1 col-12 mt-4">
+    <div class="tabelaScroll">
+        <button class="btn btn-primary col-3 ms-3 mt-3" onclick="javascript:preencher(event)"
+            type="button">Adicionar</button>
+        <table id="tabela" class="tabela table table-sm">
+            <thead>
+                <tr>
+                    <th id="erro-item">Item</th>
+                    <th id="erro-produto">Produto</th>
+                    <th id="erro-descricao">Descrição</th>
+                    <th id="erro-quantidade">Quantidade</th>
+                    <th id="erro-gbu">GBU</th>
+                    <th id="erro-valor_unit">ValorUnit</th>
+                    <th id="erro-desc1">Desc1 </th>
+                    <th id="erro-valor_unit1">ValorUnit1</th>
+                    <th id="erro-desc2">Desc2 </th>
+                    <th id="erro-valor_unit2">ValorUnit2</th>
+                    <th id="erro-descFinal">DescFinal </th>
+                    <th id="erro-valor_unit3">ValorUnit3</th>
+                    <th id="erro-total">Total </th>
+                    <th id="erro-acoes">Ações </th>
+                </tr>
+            </thead>
+
+            <tbody id="itens">
+
+                {{#if itens}}
+
+                {{#each itens}}
+                <tr>
+
+                    <div>
+                        <td><input id="item" class="item" type="text" value="{{this.item}}" required></td>
+                    </div>
+                    <td><input id="produto" class="produto" type="text" list="produtos" type="text"
+                            value="{{this.produto}}" readonly required></td>
+
+                    <td><input id="descricao" class="descricao" type="text" value="{{this.descricao}}" readonly>
+                    </td>
+                    <td><input id="quantidade" class="quantidade" type="text" value="{{this.quantidade}}" readonly
+                            required>
+                    </td>
+
+                    <td><input id="gbu" class="gbu" type="text" value="{{this.gbu}}" readonly required>
+                    </td>
+
+                    <td><input id="valor_unit" class="valor_unit" onchange="valor1()" type="text"
+                            value="{{this.valor_unit}}" readonly required></td>
+
+                    <td><input id="desc1" class="desc1" onchange="valor1()" type="number" min="0" max="99" step=".01"
+                            value="{{this.desc1}}">
+                    </td>
+                    <td><input id="valor_unit1" class="valor_unit1" onchange="valor1()" type="text"
+                            value="{{this.valor_unit1}}" readonly required></td>
+
+                    <td><input id="desc2" class="desc2" onchange="valor1()" type="number" min="0" max="99" step=".01"
+                            value="{{this.desc2}}">
+                    </td>
+                    <td><input id="valor_unit2" class="valor_unit2" onchange="valor1()" type="text"
+                            value="{{this.valor_unit2}}" readonly required></td>
+
+                    <td><input id="desc_final" class="desc_final" onchange="valor1()" min="0" max="99" step=".01"
+                            type="number" value="{{this.desc_final}}">
+
+                    </td>
+                    <td><input id="valor_unit3" class="valor_unit3" onchange="valor1()"
+                            style="text-align: right; width:100px;" type="text" value="{{this.valor_unit3}}" readonly
+                            required></td>
+
+                    <td><input id="total" class="total" type="text" value="{{this.total}}" readonly required>
+
+                    </td>
+                    <td class="acoes">
+                        <span class="btn-danger excluirC">
+                            Excluir
+                        </span>
+                    </td>
+
+                </tr>
+
+                {{/each}}
+
+                {{else}}
+
+                <tr>
+
+                </tr>
+
+                {{/if}}
+
+            </tbody>
+
+        </table>
     </div>
-    <datalist id="produtos">
-        {{#each produto}}
-        <option class="listaP" value="{{this.cod_produto}}">{{this.categoria}} - {{this.descricao}}</option>
-        {{/each}}
-    </datalist>
-    <div class="footer">
-        <h6 class="valorT"></h6>
-        <button id="form1" type="button" class="btn btn-success m-auto">Registrar</button>
-    </div>
+
+</div>
+
+<datalist id="produtos">
+    {{#each produto}}
+    <option class="listaP" value="{{this.cod_produto}}">{{this.categoria}} - {{this.descricao}}</option>
+    {{/each}}
+</datalist>
+<div class="footer bg-light">
+       
+    <button id="form1" type="button" class="btn btn-success m-auto">Registrar</button>
+     <h6 class="ms-1 valorT"></h6>
+
+
 </div>
 <script>
 
@@ -303,7 +321,6 @@
                     input.setAttribute("id", "item")
                     input.setAttribute("list", "item")
                     input.setAttribute("type", "text")
-                    input.setAttribute("style", "text-align: right;")
 
                     var td = document.createElement('td')
                     tr.appendChild(td)
@@ -316,7 +333,6 @@
                     input.setAttribute("list", "produtos")
                     input.setAttribute("type", "text")
                     input.setAttribute("readonly", "readonly")
-                    input.setAttribute("style", "text-align: right;")
 
                     var td = document.createElement('td')
                     tr.appendChild(td)
@@ -327,7 +343,21 @@
                     input.setAttribute("id", "descricao")
                     input.setAttribute("type", "text")
                     input.setAttribute("readonly", "readonly")
-                    input.setAttribute("style", "text-align: right;")
+
+                    var td = document.createElement('td')
+                    tr.appendChild(td)
+                    var input = document.createElement('input')
+                    td.appendChild(input)
+                    input.setAttribute("name", "quantidade")
+                    input.setAttribute("class", "quantidade")
+                    input.setAttribute("id", "quantidade")
+                    input.setAttribute("onchange", "valor1()")
+                    input.setAttribute("type", "number")
+                    input.setAttribute("value", 1)
+                    input.setAttribute("min", "1")
+                    input.setAttribute("max", "10000")
+                    input.setAttribute("step", ".01")
+                    input.setAttribute("oninput", "validity.valid||(value='')")
 
                     var td = document.createElement('td')
                     tr.appendChild(td)
@@ -338,7 +368,6 @@
                     input.setAttribute("id", "gbu")
                     input.setAttribute("type", "gbu")
                     input.setAttribute("readonly", "readonly")
-                    input.setAttribute("style", "text-align: right;")
 
                     var td = document.createElement('td')
                     tr.appendChild(td)
@@ -350,7 +379,6 @@
                     input.setAttribute("type", "text")
                     input.setAttribute("onchange", "valor1()")
                     input.setAttribute("readonly", "readonly")
-                    input.setAttribute("style", "text-align: right;")
 
 
                     var td = document.createElement('td')
@@ -367,7 +395,6 @@
                     input.setAttribute("max", "10000")
                     input.setAttribute("step", ".01")
                     input.setAttribute("oninput", "validity.valid||(value='')")
-                    input.setAttribute("style", "text-align: right;")
 
 
                     var td = document.createElement('td')
@@ -380,7 +407,6 @@
                     input.setAttribute("type", "text")
                     input.setAttribute("onchange", "valor1()")
                     input.setAttribute("readonly", "readonly")
-                    input.setAttribute("style", "text-align: right;")
 
 
                     var td = document.createElement('td')
@@ -396,7 +422,6 @@
                     input.setAttribute("min", "0")
                     input.setAttribute("max", "10000")
                     input.setAttribute("oninput", "validity.valid||(value='')")
-                    input.setAttribute("style", "text-align: right;")
 
 
                     var td = document.createElement('td')
@@ -408,9 +433,7 @@
                     input.setAttribute("id", "valor_unit2")
                     input.setAttribute("type", "text")
                     input.setAttribute("onchange", "valor1()")
-                    input.setAttribute("onchange", "valor1()")
                     input.setAttribute("readonly", "readonly")
-                    input.setAttribute("style", "text-align: right;")
 
 
                     var td = document.createElement('td')
@@ -426,7 +449,6 @@
                     input.setAttribute("min", "0")
                     input.setAttribute("max", "10000")
                     input.setAttribute("oninput", "validity.valid||(value='')")
-                    input.setAttribute("style", "text-align: right;")
 
 
                     var td = document.createElement('td')
@@ -439,7 +461,6 @@
                     input.setAttribute("type", "text")
                     input.setAttribute("onchange", "valor1()")
                     input.setAttribute("readonly", "readonly")
-                    input.setAttribute("style", "text-align: right;")
 
                     var td = document.createElement('td')
                     tr.appendChild(td)
@@ -450,7 +471,6 @@
                     input.setAttribute("id", "total")
                     input.setAttribute("type", "text")
                     input.setAttribute("readonly", "readonly")
-                    input.setAttribute("style", "text-align: right;")
 
                     var td = document.createElement('td')
                     tr.appendChild(td)
@@ -458,7 +478,7 @@
                     td.appendChild(span)
                     span.innerHTML = "Excluir"
 
-                    span.setAttribute("class", "btn-danger")
+                    span.setAttribute("class", "btn-danger excluirC")
 
 
                     document.getElementById('itens').appendChild(tr)
@@ -479,7 +499,7 @@
                 }
                 valor1()
             } catch {
-                swal("Error", "", "error")
+                swal("Error", "Não foi possivel preencher os itens", "error")
             }
 
         })
@@ -527,18 +547,19 @@
         var totalGeral = 0
         trItens.forEach((trItem) => {
 
-            var valor_unit = trItem.querySelector('.valor_unit')
-            var desc1 = trItem.querySelector('.desc1')
-            var valor_unit1 = trItem.querySelector('.valor_unit1')
-            var desc2 = trItem.querySelector('.desc2')
-            var valor_unit2 = trItem.querySelector('.valor_unit2')
-            var desc_final = trItem.querySelector('.desc_final')
-            var valor_unit3 = trItem.querySelector('.valor_unit3')
-            var total = trItem.querySelector('.total')
+            var quantidade = trItem.querySelector('.quantidade').value
+            var valor_unit = trItem.querySelector('.valor_unit').value
+            var desc1 = trItem.querySelector('.desc1').value
+            var valor_unit1 = trItem.querySelector('.valor_unit1').value
+            var desc2 = trItem.querySelector('.desc2').value
+            var valor_unit2 = trItem.querySelector('.valor_unit2').value
+            var desc_final = trItem.querySelector('.desc_final').value
+            var valor_unit3 = trItem.querySelector('.valor_unit3').value
+            var total = trItem.querySelector('.total').value
 
-            var ValorUnitP = valor_unit.value.replace(/,/gi, ".");
+            var ValorUnitP = valor_unit.replace(/,/gi, ".");
 
-            var calculo = parseFloat(desc1.value) * parseFloat(ValorUnitP) / 100
+            var calculo = parseFloat(desc1) * parseFloat(ValorUnitP) / 100
             var calc = calculo - parseFloat(ValorUnitP)
             var calcP = calc * -1
 
@@ -546,16 +567,18 @@
                 trItem.querySelector('.valor_unit1').value = calcP.toFixed(2)
             }
 
-            var calc3 = calc * parseFloat(desc2.value) / 100
+            var calc3 = calc * parseFloat(desc2) / 100
             var calc4 = calc3 - calc
 
             if (calc4) {
                 trItem.querySelector('.valor_unit2').value = calc4.toFixed(2)
             }
 
-            var calc6 = calc4 * parseFloat(desc_final.value) / 100
+            var calc6 = calc4 * parseFloat(desc_final) / 100
             var calc7 = calc6 - parseFloat(calc4)
             var calc7P = calc7 * -1
+
+
 
             if (calc4) {
                 trItem.querySelector('.valor_unit3').value = calc4.toFixed(2)
@@ -578,14 +601,17 @@
                 trItem.querySelector('.total').value = calc7P.toFixed(2)
             }
 
-            var totalV = trItem.querySelector('.total').value
+            var valorT = trItem.querySelector('.total').value
+            var valorF = valorT * quantidade
 
-            console.log(totalV)
-            totalGeral = totalGeral + calc7P
+            trItem.querySelector('.total').value = valorF.toFixed(2)
+
+            totalGeral = totalGeral + valorF
+
 
 
         });
-        document.querySelector('.valorT').innerHTML = totalGeral
+        document.querySelector('.valorT').innerHTML = `Total: ${totalGeral.toFixed(2)}`
     }
 
 
@@ -760,6 +786,8 @@
             //Item
             let item = document.querySelectorAll('.item')
             let produto = document.querySelectorAll('.produto')
+            let descricao = document.querySelectorAll('.descricao')
+            let quantidade = document.querySelectorAll('.quantidade')
             let gbu = document.querySelectorAll('.gbu')
             let valor_unit = document.querySelectorAll('.valor_unit')
             let desc1 = document.querySelectorAll('.desc1')
@@ -775,6 +803,8 @@
                 var items = {
                     "item": (item[i].value == "", 1, item[i].value),
                     "produto": produto[i].value,
+                    "descricao": descricao[i].value,
+                    "quantidade": quantidade[i].value,
                     "gbu": gbu[i].value,
                     "valor_unit": valor_unit[i].value,
                     "desc1": desc1[i].value,
@@ -883,7 +913,6 @@
                     itens
                 })
             })
-
                 .then((response) => response.json())
                 .then((data) => {
                     console.log("esse é a data", data)

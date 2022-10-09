@@ -90,18 +90,8 @@ const Pedido = db.define('Pedido', {
     },
     
 
-    // desconto: {
-    //     type: DataTypes.BOOLEAN,
-    //     allowNull: false,
-    //     validate: {
-    //         notEmpty: {
-    //             msg : "Esse campo não pode ser vazio ! "
-    //         }
-    //     }
-    // },
-
 })
 
-// db.sync({force:true})
+// Pedido.sync({force:true})
 
 module.exports = Pedido

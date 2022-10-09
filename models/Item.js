@@ -16,6 +16,16 @@ const Item = db.define('Item', {
         allowNull: false,
     },
 
+    descricao: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+    quantidade: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
     gbu: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -75,7 +85,7 @@ const Item = db.define('Item', {
 
 })
 
-// db.sync({force:true})
+// Item.sync({alter:true})
 
 
 Item.belongsTo(Pedido, { allowNull: false, constraint:true, foreignKey: 'idPedido'})
