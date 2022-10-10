@@ -7,8 +7,8 @@
         <li class="aba" id="aba-2">
             <a class="nav-link link-dark" onclick="mostrar1()">Itens</a>
 
-            <li class="aba" id="aba-3">
-            <a class="nav-link link-dark" onclick="esconder()">Fechar</a>
+        <li class="aba" id="aba-3">
+            <button id="form1" type="button" class="btn btn-success me-2 ms-2">Registrar</button>
 
     </ul>
 </div>
@@ -16,25 +16,33 @@
 <script>
     function mostrar() {
         const mudar = document.querySelector(".header")
+        const mudar1 = document.querySelector('.tabelaScroll')
         mudar.style.display = "block"
+        mudar1.style.display = "none"
     }
 
     function mostrar1() {
+        const mudar = document.querySelector(".header")
         const mudar1 = document.querySelector('.tabelaScroll')
         mudar1.style.display = "block"
+        mudar.style.display = "none"
+
     }
 
-    function esconder(){
+    function esconder() {
         const mudar = document.querySelector(".header")
-         mudar.style.display = "none"
-         const mudar1 = document.querySelector('.tabelaScroll')
-         mudar1.style.display = "none"
+        mudar.style.display = "none"
+        const mudar1 = document.querySelector('.tabelaScroll')
+        mudar1.style.display = "none"
     }
 
 </script>
 
 
 <div class="container-fluid">
+
+    <button id="form1" type="button" class="btn-success formR col-2">Registrar</button>
+    <hr>
     <form>
         <div class="header">
             <div class="row">
@@ -156,7 +164,7 @@
                     <small id="erro-cond_pagamento" class="vermelho"></small>
                 </div>
 
-                <div class="form-group col-sm-2 mb-5">
+                <div class="form-group mb-5 col-sm-2">
                     <label>Transportadora</label>
                     <input class="form-control" type="text" name="transportadora" id="transportadora"
                         placeholder="Transportadora..." value="{{pedido.transportadora}}" required>
@@ -171,8 +179,9 @@
 
 <div class="table1 col-12 mt-4">
     <div class="tabelaScroll">
-        <button class="btn btn-primary col-3 ms-3 mt-3" onclick="javascript:preencher(event)"
+        <button class="btn btn-primary col-2 ms-3 mt-3" onclick="javascript:preencher(event)"
             type="button">Adicionar</button>
+        <button class="btn btn-primary col-2 ms-3 mt-3" onclick="javascript:adicionarCampo()" type="button">+</button>
         <table id="tabela" class="tabela table table-sm">
             <thead>
                 <tr>
@@ -193,7 +202,7 @@
                 </tr>
             </thead>
 
-            <tbody id="itens">
+            <tbody class="novalinha" id="itens">
 
                 {{#if itens}}
 
@@ -272,11 +281,7 @@
     {{/each}}
 </datalist>
 <div class="footer bg-light">
-       
-    <button id="form1" type="button" class="btn btn-success m-auto">Registrar</button>
-     <h6 class="ms-1 valorT"></h6>
-
-
+    <h6 class="m-auto valorT"></h6>
 </div>
 <script>
 
@@ -608,17 +613,15 @@
 
             totalGeral = totalGeral + valorF
 
-
-
         });
         document.querySelector('.valorT').innerHTML = `Total: ${totalGeral.toFixed(2)}`
     }
 
-
+    var controleCampo = 1
     function adicionarCampo() {
-
-        document.getElementById('novalinha').insertAdjacentHTML('beforeend',
-            '<tr id="campo' + controleCampo + '" ><td><input id="item" class="item"  type="text" value="' + controleCampo + '"></td><td><input id="produto"class="produto" onchange="produtoVal(this.value)" style="text-align: right;" type="text" type="text" list="produtos"></td><td><input id="descricao" class="descricao" type="text" readonly></td><td><input id="gbu" class="gbu" style="text-align: right;" type="text" value="{{this.gbu}}"></td><td><input id="valor_unit" class="valor_unit" onchange="valor1()" style="text-align: right;" type="text"value="{{this.valor_unit}}"></td><td><input id="desc1" class="desc1" onchange="valor1()" style="text-align: right;" type="text" value="{{this.desc1}}"></td><td><input id="valor_unit1" class="valor_unit1" onchange="valor1()" style="text-align: right;" type="text"value="{{this.valor_unit1}}"></td><td><input id="desc2" class="desc2" onchange="valor1()" style="text-align: right;" type="text" value="{{this.desc2}}"></td><td><input id="valor_unit2" class="valor_unit2" onchange="valor1()" style="text-align: right;" type="text"value="{{this.valor_unit2}}"></td><td><input id="desc_final" class="desc_final" onchange="valor1()" style="text-align: right;" type="text"value="{{this.desc_final}}"></td><td><input id="valor_unit3" class="valor_unit3" onchange="valor1()" style="text-align: right;" type="text"value="{{this.valor_unit3}}"></td><td><input id="total" class="total" style="text-align: right;" type="text" value="{{this.total}}"></td></td><td class="acoes"><span class="btn-danger">Excluir</span></td></tr>'
+        controleCampo++
+        document.querySelector('.novalinha').insertAdjacentHTML('beforeend',
+            '<tr data-item="${controleCampo}" class="tr-item"><td><input id="item" class="item"  type="text" value="' + controleCampo + '"></td><td><input id="produto"class="produto" onchange="produtoVal(this.value)" style="text-align: right;" type="text" type="text" list="produtos"></td><td><input id="descricao" class="descricao" style="text-align: right;" type="text"></td><td><input id="quantidade" class="quantidade" style="text-align: right;" type="text"></td><td><input id="gbu" class="gbu" style="text-align: right;" type="text"></td><td><input id="valor_unit" class="valor_unit" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="desc1" class="desc1" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="valor_unit1" class="valor_unit1" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="desc2" class="desc2" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="valor_unit2" class="valor_unit2" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="desc_final" class="desc_final" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="valor_unit3" class="valor_unit3" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="total" class="total" style="text-align: right;" type="text"></td></td><td class="acoes"><span class="btn-danger excluirC">Excluir</span></td></tr>'
         )
     }
 
