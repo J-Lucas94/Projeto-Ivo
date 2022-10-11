@@ -210,10 +210,11 @@
                 <tr>
 
                     <div>
-                        <td><input id="item" class="item" type="text" value="{{this.item}}" required></td>
+                        <td><input id="item" class="item" type="text" list="produtos" value="{{this.item}}" required>
+                        </td>
                     </div>
-                    <td><input id="produto" class="produto" type="text" list="produtos" type="text"
-                            value="{{this.produto}}" readonly required></td>
+                    <td><input id="produto" class="produto" type="text" type="text" value="{{this.produto}}" readonly
+                            required></td>
 
                     <td><input id="descricao" class="descricao" type="text" value="{{this.descricao}}" readonly>
                     </td>
@@ -280,6 +281,8 @@
     <option class="listaP" value="{{this.cod_produto}}">{{this.categoria}} - {{this.descricao}}</option>
     {{/each}}
 </datalist>
+
+
 <div class="footer bg-light">
     <h6 class="m-auto valorT"></h6>
 </div>
@@ -510,31 +513,72 @@
         })
     }
 
+    function adicionarCampo() {
 
-    function produtoVal(valor) {
+        document.querySelector('.novalinha').insertAdjacentHTML('beforeend',
+            '<tr class="tr-item"><td><input id="item" class="item" onchange="produtoVal(this.value)" list="produtos" type="text" value=""></td><td><input name="produto" class="produto" id="produto" onchange="produtoVal(this.value)" list="produtos" type="text" readonly="readonly"></td><td><input name="descricao" class="descricao" id="descricao" type="text" readonly="readonly"></td><td><input name="quantidade" class="quantidade" id="quantidade" onchange="valor1()" type="number" value="1" min="1" max="10000" step=".01"></td><td><input name="gbu" class="gbu" id="gbu" type="gbu" readonly="readonly"></td><td><input name="valor_unit" class="valor_unit" id="valor_unit" type="text" onchange="valor1()" readonly="readonly"></td><td><input name="desc1" class="desc1" id="desc1" type="number" value="0" onchange="valor1()" min="0" max="10000" step=".01"></td><td><input name="valor_unit1" class="valor_unit1" id="valor_unit1" type="text" onchange="valor1()" readonly="readonly"></td><td><input name="desc2" class="desc2" id="desc2" type="number" value="0" onchange="valor1()" min="0" max="10000"></td><td><input name="valor_unit2" class="valor_unit2" id="valor_unit2" type="text" onchange="valor1()" readonly="readonly"></td><td><input name="desc_final" class="desc_final" id="desc_final" type="number" value="0" onchange="valor1()" min="0" max="10000"></td><td><input name="valor_unit3" class="valor_unit3" id="valor_unit3" type="text" onchange="valor1()" readonly="readonly"></td><td><input name="total" class="total" id="total" type="text" readonly="readonly"></td></td><td class="acoes"><span class="btn-danger excluirC">Excluir</span></td></tr>'
+        )
+    }
 
-        var lista = document.querySelectorAll('.listaP')
 
-        var lResult = false;
+    async function produtoVal(valor) {
 
-        lista.forEach((item) => {
-            if (item.value == valor) {
-                lResult = true;
-                return
-            }
-        });
 
-        if (lResult == false) {
-            swal("Error !", "Produto não encontrado!", "error");
-            document.getElementById('form1').disabled = true;
-            document.getElementById('erro-produto').innerHTML = "Produto não encontrado!";
-            document.getElementById('erro-produto').style.color = 'red';
-            return false;
+        var itemT = document.querySelectorAll('.item')
+
+        var trItens = document.querySelectorAll(".tr-item")
+
+
+        if (trItens.length == 0) {
+            controleCampo = 1
         } else {
-            document.getElementById('erro-produto').innerHTML = "Produto";
-            document.getElementById('erro-produto').style.color = 'black';
-            document.getElementById('form1').disabled = false;
+
+            var controleCampo = await parseInt(document.querySelectorAll(".tr-item")[document.querySelectorAll(".tr-item").length - 1].getAttribute('data-item')) + 1
+
         }
+
+        itemT.forEach(async (itemV) => {
+            console.log(itemV.value)
+            const result = await fetch('/pedido/produtos/' + itemV.value)
+            var response = await result.json()
+
+            if (result.status == 400) {
+                swal("Error", "Produto invalido: " + produto, "error")
+
+            } else {
+                var lista = document.querySelectorAll('.listaP')
+
+                var lResult = false;
+
+                lista.forEach((item) => {
+                    if (item.value == valor) {
+                        lResult = true;
+                        return
+                    }
+                });
+
+                var item = document.querySelectorAll(".tr-item")[controleCampo - 1]
+                console.log(item)
+
+                    if (lResult == false) {
+                        swal("Error !", "Item não encontrado!", "error");
+                        document.querySelector('.formR').disabled = true;
+                        return false;
+                    } else {
+                        document.querySelector('.formR').disabled = false;
+                        var produto = item.querySelector(".produto").value = response.descricao
+                        console.log(produto)
+                        var descricao = item.querySelector(".descricao").value = response.categoria
+                        var gbu = item.querySelector(".gbu").value = response.gbu
+                        var valor_unit = item.querySelector(".valor_unit").value = response.precos
+                        var valor_unit1 = item.querySelector(".valor_unit1").value = response.precos
+                        var valor_unit2 = item.querySelector(".valor_unit2").value = response.precos
+                        var valor_unit3 = item.querySelector(".valor_unit3").value = response.precos
+                        var valor_unit3 = item.querySelector(".total").value = response.precos
+                    }
+            }
+        })
+
     }
 
     tabela.addEventListener("click", ((event) => {
@@ -583,8 +627,6 @@
             var calc7 = calc6 - parseFloat(calc4)
             var calc7P = calc7 * -1
 
-
-
             if (calc4) {
                 trItem.querySelector('.valor_unit3').value = calc4.toFixed(2)
             }
@@ -617,13 +659,7 @@
         document.querySelector('.valorT').innerHTML = `Total: ${totalGeral.toFixed(2)}`
     }
 
-    var controleCampo = 1
-    function adicionarCampo() {
-        controleCampo++
-        document.querySelector('.novalinha').insertAdjacentHTML('beforeend',
-            '<tr data-item="${controleCampo}" class="tr-item"><td><input id="item" class="item"  type="text" value="' + controleCampo + '"></td><td><input id="produto"class="produto" onchange="produtoVal(this.value)" style="text-align: right;" type="text" type="text" list="produtos"></td><td><input id="descricao" class="descricao" style="text-align: right;" type="text"></td><td><input id="quantidade" class="quantidade" style="text-align: right;" type="text"></td><td><input id="gbu" class="gbu" style="text-align: right;" type="text"></td><td><input id="valor_unit" class="valor_unit" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="desc1" class="desc1" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="valor_unit1" class="valor_unit1" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="desc2" class="desc2" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="valor_unit2" class="valor_unit2" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="desc_final" class="desc_final" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="valor_unit3" class="valor_unit3" onchange="valor1()" style="text-align: right;" type="text"></td><td><input id="total" class="total" style="text-align: right;" type="text"></td></td><td class="acoes"><span class="btn-danger excluirC">Excluir</span></td></tr>'
-        )
-    }
+    
 
 
     //Fetch Pedido
