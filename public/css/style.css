@@ -87,7 +87,7 @@
     color: rgb(7, 7, 7);
     text-align: center;
     background-color: white;
-    height: 8%;
+    height: 3%;
 }
 
 
@@ -272,6 +272,6 @@
 }
 
 .tabelaScroll {
-    max-height: 300px;
+    max-height: 250px;
     overflow-y: scroll;
 }
